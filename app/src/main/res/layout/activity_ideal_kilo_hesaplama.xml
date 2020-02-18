@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".Hesaplamalar.IdealKiloHesaplama">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal"
+        android:text="İdeal Kilo Hesaplama"
+        android:textColor="#4ddbff"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/edIdealActYas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edIdealActBoy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="\t Boyunuzu giriniz "
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="24sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnHesaplaIdealAct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edIdealActYas" />
+
+    <Button
+        android:id="@+id/btnHesaplaIdealAct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+
+        android:onClick="hesaplaIdeal"
+        android:text="HESAPLA"
+        android:textColor="#4ddbff"
+        app:layout_constraintBottom_toTopOf="@+id/tvCevapIdealAct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edIdealActBoy" />
+
+    <TextView
+        android:id="@+id/tvCevapIdealAct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="16dp"
+
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal"
+        android:text="TextView"
+        android:textColor="#4ddbff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHesaplaIdealAct" />
+
+    <EditText
+        android:id="@+id/edIdealActYas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="\t Yaşınızı giriniz "
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/edIdealActBoy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

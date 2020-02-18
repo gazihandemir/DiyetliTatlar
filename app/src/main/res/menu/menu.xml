@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bki_menu"
+
+        android:title="Vücut Kitle İndeksi Hesaplama"></item>
+    <item
+        android:id="@+id/bmh_menu"
+        android:title="Bazal Metabolizma Hızı Hesaplama"></item>
+    <item
+        android:id="@+id/age_menu"
+        android:title="Almamız Gereken Enerji Hesaplama"></item>
+    <item
+        android:id="@+id/ideal_menu"
+        android:title="İdeal Kilo Hesaplama"></item> <item
+        android:id="@+id/su_menu"
+        android:title="Günlük Almamız Gereken Su Miktarı Hesaplama"></item>
+</menu>
