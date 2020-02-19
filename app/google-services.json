@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "805754738501-8up5hhipk47jjfoqd39lidb2m8q8s1e1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.girisekran",
+            "certificate_hash": "58dbff44319a02211000c72a565b21a8f7247ff9"
+          }
+        },
+        {
           "client_id": "805754738501-6v1vp50l24a5odqr8hd08cg36tqcoes2.apps.googleusercontent.com",
           "client_type": 3
         }

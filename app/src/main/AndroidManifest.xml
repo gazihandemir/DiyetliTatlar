@@ -17,7 +17,7 @@
         <activity android:name=".Hesaplamalar.IdealKiloHesaplama" />
         <activity android:name=".Hesaplamalar.BKİActivity" />
         <activity android:name=".Activity.SignUpActivity" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

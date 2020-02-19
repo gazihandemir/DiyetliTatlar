@@ -1,10 +1,7 @@
 package com.example.girisekran.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.content.Intent;
-
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,10 +9,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toolbar;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.girisekran.R;
 
 
-public class MainActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     EditText email, password;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_in);
 
 
         email = (EditText) findViewById(R.id.email);
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Toast.makeText(MainActivity.this, "Sign In Button Clicked", Toast.LENGTH_LONG).show();
+               // Toast.makeText(SignInActivity.this, "Sign In Button Clicked", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
                 startActivity(intent);
             }
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, SignUpActivity.class);
+                Intent i = new Intent(SignInActivity.this, SignUpActivity.class);
                 startActivity(i);
             }
         });

@@ -3,16 +3,33 @@ package com.example.girisekran;
 import java.util.Date;
 
 public class Users {
+    String userId;
     String userIsim;
     String userSoyisim;
     int userTelefonNumarası;
+
+
     String userEmail;
     Date userDogumTarihi;
     String userMeslek;
     String userSehir;
+
+
     String userBoy;
     String userKilo;
     String userOlcumBel;
+
+    public Users() {
+
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getUserIsim() {
         return userIsim;
@@ -142,11 +159,12 @@ public class Users {
         this.userDanisanHikayesi = userDanisanHikayesi;
     }
 
-    public Users(String userIsim, String userSoyisim, int userTelefonNumarası, String userEmail,
+    public Users(String userId, String userIsim, String userSoyisim, int userTelefonNumarası, String userEmail,
                  Date userDogumTarihi, String userMeslek, String userSehir, String userBoy,
                  String userKilo, String userOlcumBel, String userOlcumKalca, String userOlcumGogus,
                  String userOlcumBacak, String userHastalıkAdi, String userTahlildeOnemliUnsurlar,
                  String userDanisanHikayesi) {
+        this.userId = userId;
         this.userIsim = userIsim;
         this.userSoyisim = userSoyisim;
         this.userTelefonNumarası = userTelefonNumarası;
