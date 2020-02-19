@@ -1,5 +1,10 @@
 package com.example.girisekran.Activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,39 +12,24 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.girisekran.Fragments.ProfileActivityBasariHikayemFragment;
 import com.example.girisekran.Fragments.ProfileActivityDiyetisyenBilgilerimFragment;
-import com.example.girisekran.Fragments.ProfileActivityKisiselBilgilerimFragment;
 import com.example.girisekran.Fragments.ProfileActivityFragment;
 import com.example.girisekran.Fragments.ProfileActivityKafamKarisiyorFragment;
+import com.example.girisekran.Fragments.ProfileActivityKisiselBilgilerimFragment;
 import com.example.girisekran.R;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
-
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -87,6 +77,11 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 Toast.makeText(this, "Gazihan DEMİR -> Yazılımcı iletişim : gazihand@gmail.com \n " +
                         "Gülten manav -> diyetisyen iletişim : gültenmnv@gmail.com", Toast.LENGTH_LONG).show();
                 break;
+            case R.id.profileActivityNavCikis:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -100,7 +95,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             super.onBackPressed();
         }
     }
-
 
 
 }

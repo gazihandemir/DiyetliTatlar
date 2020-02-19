@@ -15,9 +15,9 @@
             android:title="Kişisel Bilgilerim" />
 
         <item
-        android:id="@+id/profileActivityNavDiyetisyenBilgilerim"
-        android:icon="@drawable/ic_profile_activity_diyetisyen_bilgilerim"
-        android:title="Diyetisyen Bilgilerim" />
+            android:id="@+id/profileActivityNavDiyetisyenBilgilerim"
+            android:icon="@drawable/ic_profile_activity_diyetisyen_bilgilerim"
+            android:title="Diyetisyen Bilgilerim" />
         <item
             android:id="@+id/profileActivityNavBasariHikayem"
             android:icon="@drawable/ic_profile_activity_basari_hikayem"
@@ -28,6 +28,10 @@
 
     <item android:title="Yardım">
         <menu>
+            <item
+                android:id="@+id/profileActivityNavCikis"
+                android:icon="@drawable/ic_exit"
+                android:title="Çıkış" />
             <item
                 android:id="@+id/profileActivityNavKafamKaristi"
                 android:icon="@drawable/ic_profile_activity_kafam_karisti"

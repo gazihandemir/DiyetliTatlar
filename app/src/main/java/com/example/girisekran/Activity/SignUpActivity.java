@@ -70,7 +70,6 @@ public class SignUpActivity extends AppCompatActivity {
                             users1.setUserEmail(firebaseUser.getEmail());
                             System.out.println("user email : " + users1.getUserEmail());
 
-
                         } else {
                             Toast.makeText(SignUpActivity.this, "Kayıt oluşturulamadı complateListener", Toast.LENGTH_SHORT).show();
                         }
