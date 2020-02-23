@@ -12,8 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.girisekran.Class.Users;
 import com.example.girisekran.R;
-import com.example.girisekran.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,6 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -29,8 +34,10 @@ public class SignUpActivity extends AppCompatActivity {
     CheckBox checkBox;
     ImageButton signup;
     Button signin;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
     static Users users1 = new Users();
-
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +67,14 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void kayıtOl(View view) {
-
         mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isComplete()) {
-                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                            firebaseUser = mAuth.getCurrentUser();
                             users1.setUserEmail(firebaseUser.getEmail());
                             System.out.println("user email : " + users1.getUserEmail());
-
                         } else {
                             Toast.makeText(SignUpActivity.this, "Kayıt oluşturulamadı complateListener", Toast.LENGTH_SHORT).show();
                         }
@@ -86,10 +91,32 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(SignUpActivity.this, "Hoşgeldiniz \n " + users1.getUserEmail(), Toast.LENGTH_SHORT).show();
+             //   ismideKayitYap();
                 Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
                 startActivity(intent);
             }
         });
 
+
+    }
+
+    public void ismideKayitYap() {
+        String userID = firebaseUser.getUid();
+        String userName = name.getText().toString();
+        Map profileMap = new HashMap();
+        profileMap.put("İsimSoyisim", userName);
+        databaseReference.child("Profile").child(userID).setValue(profileMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(SignUpActivity.this, "isminide ekledik", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SignUpActivity.this, "isminide ekleyemedik yani fail", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

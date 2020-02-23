@@ -1,8 +1,13 @@
 package com.example.girisekran.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,22 +23,45 @@ import com.example.girisekran.Fragments.ProfileActivityFragment;
 import com.example.girisekran.Fragments.ProfileActivityKafamKarisiyorFragment;
 import com.example.girisekran.Fragments.ProfileActivityKisiselBilgilerimFragment;
 import com.example.girisekran.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private StorageReference storageReference;
     private FirebaseAuth mAuth;
+    Uri selected;
+    ImageView imgProfilResmi;
+    TextView tvProfilIsmi, tvProfilMail;
+    Button btnUpload;
+    EditText edIsimSoyisim, edTelefonNo, edEmail, edDogumTarihi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        NavigationView navigationView = findViewById(R.id.profileActivityNavView);
         mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        NavigationView navigationView = findViewById(R.id.profileActivityNavView);
 
         navigationView.setNavigationItemSelectedListener(this);
         drawerLayout = findViewById(R.id.profileActivityDraverLayout);
@@ -45,6 +73,8 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner, new ProfileActivityFragment()).commit();
             navigationView.setCheckedItem(R.id.profileActivityNavHesapBilgilerim);
         }
+        bilgileriAl();
+        //  veriKaydet();
 
     }
 
@@ -87,6 +117,54 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         return true;
     }
 
+
+    public void bilgileriAl() {
+
+
+        String tvProfilİsmi = getIntent().getStringExtra("tvProfilİsmi");
+        String tvProfilMail = getIntent().getStringExtra("tvProfilMail");
+        String edIisimSoyisim = getIntent().getStringExtra("edIisimSoyisim");
+        String edTelefonNo = getIntent().getStringExtra("edTelefonNo");
+        String edEmail = getIntent().getStringExtra("edEmail");
+        String edDogumTarihi = getIntent().getStringExtra("edDogumTarihi");
+        System.out.println("gazi -> " + tvProfilİsmi);
+        System.out.println("gazi -> " + tvProfilMail);
+        System.out.println("gazi -> " + edIisimSoyisim);
+        System.out.println("gazi -> " + edTelefonNo);
+        System.out.println("gazi -> " + edEmail);
+        System.out.println("gazi -> " + edDogumTarihi);
+
+
+    }
+
+
+    public void veriKaydet() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userID = user.getUid();
+        Map profileMap = new HashMap();
+        profileMap.put("İsimSoyisim", edIsimSoyisim);
+        profileMap.put("edTelefonNo", edTelefonNo);
+        profileMap.put("edEmail", edEmail);
+        profileMap.put("edDogumTarihi", edDogumTarihi);
+        databaseReference.child("Profile").child(userID).child("İsimSoyisim").setValue(profileMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(ProfileActivity.this, "Veri Kaydedildi", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ProfileActivity.this, "Basarisiz", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                System.out.println("gazi -> " + e.getMessage());
+            }
+        });
+    }
+
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -94,6 +172,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         } else {
             super.onBackPressed();
         }
+
     }
 
 

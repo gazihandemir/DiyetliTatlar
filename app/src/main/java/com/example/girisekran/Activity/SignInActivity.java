@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.girisekran.Activity.SignUpActivity.users1;
 
@@ -28,11 +30,13 @@ import static com.example.girisekran.Activity.SignUpActivity.users1;
 public class SignInActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    EditText email, password;
+    EditText email, password,name;
     CheckBox checkBox;
     ImageButton signin;
     Button signup;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,4 @@
-package com.example.girisekran;
-
-import java.util.Date;
+package com.example.girisekran.Class;
 
 public class Users {
     String userId;
@@ -10,7 +8,7 @@ public class Users {
 
 
     String userEmail;
-    Date userDogumTarihi;
+    String userDogumTarihi;
     String userMeslek;
     String userSehir;
 
@@ -63,11 +61,11 @@ public class Users {
         this.userEmail = userEmail;
     }
 
-    public Date getUserDogumTarihi() {
+    public String getUserDogumTarihi() {
         return userDogumTarihi;
     }
 
-    public void setUserDogumTarihi(Date userDogumTarihi) {
+    public void setUserDogumTarihi(String userDogumTarihi) {
         this.userDogumTarihi = userDogumTarihi;
     }
 
@@ -160,7 +158,7 @@ public class Users {
     }
 
     public Users(String userId, String userIsim, String userSoyisim, int userTelefonNumarası, String userEmail,
-                 Date userDogumTarihi, String userMeslek, String userSehir, String userBoy,
+                 String userDogumTarihi, String userMeslek, String userSehir, String userBoy,
                  String userKilo, String userOlcumBel, String userOlcumKalca, String userOlcumGogus,
                  String userOlcumBacak, String userHastalıkAdi, String userTahlildeOnemliUnsurlar,
                  String userDanisanHikayesi) {
@@ -178,6 +176,32 @@ public class Users {
         this.userOlcumKalca = userOlcumKalca;
         this.userOlcumGogus = userOlcumGogus;
         this.userOlcumBacak = userOlcumBacak;
+        this.userHastalıkAdi = userHastalıkAdi;
+        this.userTahlildeOnemliUnsurlar = userTahlildeOnemliUnsurlar;
+        this.userDanisanHikayesi = userDanisanHikayesi;
+    }
+
+    public Users(String userId, String userIsim, String userSoyisim, int userTelefonNumarası, String userEmail, String userDogumTarihi) {
+        this.userId = userId;
+        this.userIsim = userIsim;
+        this.userSoyisim = userSoyisim;
+        this.userTelefonNumarası = userTelefonNumarası;
+        this.userEmail = userEmail;
+        this.userDogumTarihi = userDogumTarihi;
+    }
+
+    public Users(String userMeslek, String userSehir, String userBoy, String userKilo, String userOlcumBel, String userOlcumKalca, String userOlcumGogus, String userOlcumBacak) {
+        this.userMeslek = userMeslek;
+        this.userSehir = userSehir;
+        this.userBoy = userBoy;
+        this.userKilo = userKilo;
+        this.userOlcumBel = userOlcumBel;
+        this.userOlcumKalca = userOlcumKalca;
+        this.userOlcumGogus = userOlcumGogus;
+        this.userOlcumBacak = userOlcumBacak;
+    }
+
+    public Users(String userHastalıkAdi, String userTahlildeOnemliUnsurlar, String userDanisanHikayesi) {
         this.userHastalıkAdi = userHastalıkAdi;
         this.userTahlildeOnemliUnsurlar = userTahlildeOnemliUnsurlar;
         this.userDanisanHikayesi = userDanisanHikayesi;
