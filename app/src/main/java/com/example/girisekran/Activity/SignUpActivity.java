@@ -31,6 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     CheckBox checkBox;
     ImageButton signup;
     Button signin;
+
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     static Users users1 = new Users();
@@ -50,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         signup = (ImageButton) findViewById(R.id.btnSignUpActKayıtOl);
 
         signin = (Button) findViewById(R.id.btnSignUpActSignInActGecis);
+        firebaseUser = mAuth.getCurrentUser();
 
 
         signin.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(SignUpActivity.this, "Hoşgeldiniz \n " + users1.getUserEmail(), Toast.LENGTH_SHORT).show();
-               kayitYapilanlariGönder();
+                kayitYapilanlariGönder();
             }
         });
 
@@ -99,6 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
         String IsimSoyisim = name.getText().toString();
         intent.putExtra("IsimSoyisim", IsimSoyisim);
+
         startActivity(intent);
     }
 /*    public void ismideKayitYap() {

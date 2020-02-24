@@ -8,6 +8,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="408dp"
         android:layout_height="192dp"
+
         android:background="@drawable/background"
 
         android:orientation="vertical"

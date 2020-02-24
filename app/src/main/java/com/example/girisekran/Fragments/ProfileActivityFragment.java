@@ -20,8 +20,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -43,6 +46,7 @@ public class ProfileActivityFragment extends Fragment {
     String stTelefonNo;
     String stEmail;
     String stDogumTarihi;
+    String ilkGiris = "1";
 
     public ProfileActivityFragment() {
     }
@@ -50,6 +54,8 @@ public class ProfileActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -65,7 +71,9 @@ public class ProfileActivityFragment extends Fragment {
         edTelefonNo = rootView.findViewById(R.id.edProfileFragmentActTelefonNumarası);
         edEmail = rootView.findViewById(R.id.edProfileFragmentActEmail);
         edDogumTarihi = rootView.findViewById(R.id.edProfileFragmentActDogumTarihi);
-        KayitOlanKullanicilarinBilgileriniHemenKaydet();
+
+        // KayitOlanKullanicilarinBilgileriniHemenKaydet();
+
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +89,11 @@ public class ProfileActivityFragment extends Fragment {
                 veriKaydet();
             }
         });
+
+
+        bilgileriCek();
+
+
         return rootView;
 
     }
@@ -97,7 +110,7 @@ public class ProfileActivityFragment extends Fragment {
         profileMap.put("TelefonNo", stTelefonNo);
         profileMap.put("Email", firebaseUser.getEmail().toString());
         profileMap.put("DogumTarihi", stDogumTarihi);
-        databaseReference.child("Profile").child("ProfileHesapBilgileri").child(userID).setValue(profileMap)
+        databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").setValue(profileMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -117,15 +130,19 @@ public class ProfileActivityFragment extends Fragment {
 
     }
 
-    private void KayitOlanKullanicilarinBilgileriniHemenKaydet() {
+/*    private void KayitOlanKullanicilarinBilgileriniHemenKaydet() {
         String userID = firebaseUser.getUid();
-        String IsimSoyisim = getActivity().getIntent().getStringExtra("IsimSoyisim");
+        stIisimSoyisim = edIsimSoyisim.getText().toString();
         String userEmail = firebaseUser.getEmail().toString();
+        String IsimSoyisim = getActivity().getIntent().getStringExtra("IsimSoyisim");
         Map<String, String> profileMap = new HashMap<>();
         profileMap.put("IsimSoyisim", IsimSoyisim);
+        profileMap.put("TelefonNo", "");
         profileMap.put("Email", userEmail);
-        databaseReference.child("Profile").child("ProfileHesapBilgileri").child(userID).setValue(profileMap)
+        profileMap.put("DogumTarihi", "");
+        databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").setValue(profileMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
+
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -135,6 +152,40 @@ public class ProfileActivityFragment extends Fragment {
                         }
                     }
                 });
+    }*/
+
+    private void bilgileriCek() {
+        final String userID = firebaseUser.getUid();
+        databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String getkey = dataSnapshot.getKey();
+                String getchildren = dataSnapshot.getChildren().toString();
+                String getvalue = dataSnapshot.getValue().toString();
+                HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
+                String userIsimSoyisim = hashMap.get("IsimSoyisim");
+                String userEmail = hashMap.get("Email");
+                String userTelefonNo = hashMap.get("TelefonNo");
+                String userDogumTarihi = hashMap.get("DogumTarihi");
+                System.out.println("gazi -> getkey" + getkey);
+                System.out.println("gazi -> getchildren" + getchildren);
+                System.out.println("gazi -> getvalue" + getvalue);
+                System.out.println("gazi -> value1 " + userEmail);
+                edEmail.setText(userEmail);
+                edIsimSoyisim.setText(userIsimSoyisim);
+                edTelefonNo.setText(userTelefonNo);
+                edDogumTarihi.setText(userDogumTarihi);
+                tvProfilIsmi.setText(userIsimSoyisim);
+                tvProfilMail.setText(userEmail);
+                edEmail.setFocusable(false);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
+
 
 }
