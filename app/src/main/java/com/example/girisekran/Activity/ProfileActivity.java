@@ -23,19 +23,12 @@ import com.example.girisekran.Fragments.ProfileActivityFragment;
 import com.example.girisekran.Fragments.ProfileActivityKafamKarisiyorFragment;
 import com.example.girisekran.Fragments.ProfileActivityKisiselBilgilerimFragment;
 import com.example.girisekran.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
@@ -120,7 +113,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
     public void bilgileriAl() {
 
-
+    /*
         String tvProfilİsmi = getIntent().getStringExtra("tvProfilİsmi");
         String tvProfilMail = getIntent().getStringExtra("tvProfilMail");
         String edIisimSoyisim = getIntent().getStringExtra("edIisimSoyisim");
@@ -132,11 +125,12 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         System.out.println("gazi -> " + edIisimSoyisim);
         System.out.println("gazi -> " + edTelefonNo);
         System.out.println("gazi -> " + edEmail);
-        System.out.println("gazi -> " + edDogumTarihi);
+        System.out.println("gazi -> " + edDogumTarihi);*/
 
 
     }
 
+/*
 
     public void veriKaydet() {
         FirebaseUser user = mAuth.getCurrentUser();
@@ -163,6 +157,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             }
         });
     }
+*/
 
 
     @Override

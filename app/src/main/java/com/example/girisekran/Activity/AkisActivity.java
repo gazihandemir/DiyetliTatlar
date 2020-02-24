@@ -1,15 +1,15 @@
 package com.example.girisekran.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.girisekran.Fragments.DenemeFragment1;
 import com.example.girisekran.Fragments.DenemeFragment2;
@@ -49,6 +49,7 @@ public class AkisActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +69,11 @@ public class AkisActivity extends AppCompatActivity {
         DenemeFragment2 firstFragment = new DenemeFragment2();
         fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();
     }
+
     public void deneme5(View view) {
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        String IsimSoyisim = getIntent().getStringExtra("IsimSoyisim");
+        intent.putExtra("IsimSoyisim",IsimSoyisim);
         startActivity(intent);
     }
 }

@@ -24,9 +24,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -91,16 +88,20 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(SignUpActivity.this, "Hoşgeldiniz \n " + users1.getUserEmail(), Toast.LENGTH_SHORT).show();
-             //   ismideKayitYap();
-                Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
-                startActivity(intent);
+               kayitYapilanlariGönder();
             }
         });
 
 
     }
 
-    public void ismideKayitYap() {
+    public void kayitYapilanlariGönder() {
+        Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
+        String IsimSoyisim = name.getText().toString();
+        intent.putExtra("IsimSoyisim", IsimSoyisim);
+        startActivity(intent);
+    }
+/*    public void ismideKayitYap() {
         String userID = firebaseUser.getUid();
         String userName = name.getText().toString();
         Map profileMap = new HashMap();
@@ -118,5 +119,5 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "isminide ekleyemedik yani fail", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 }

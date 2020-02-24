@@ -29,9 +29,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ProfileActivityFragment extends Fragment {
     ImageView imgProfilResmi;
     TextView tvProfilIsmi, tvProfilMail;
@@ -41,7 +38,7 @@ public class ProfileActivityFragment extends Fragment {
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private FirebaseAuth mAuth;
-
+    private FirebaseUser firebaseUser;
     String stIisimSoyisim;
     String stTelefonNo;
     String stEmail;
@@ -57,6 +54,7 @@ public class ProfileActivityFragment extends Fragment {
         databaseReference = firebaseDatabase.getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
         //  System.out.println("gazi -> onCreateView başladı");
         View rootView = inflater.inflate(R.layout.fragment_profile_activity, container, false);
         imgProfilResmi = rootView.findViewById(R.id.imgProfileFragmentActProfilResmi);
@@ -67,7 +65,7 @@ public class ProfileActivityFragment extends Fragment {
         edTelefonNo = rootView.findViewById(R.id.edProfileFragmentActTelefonNumarası);
         edEmail = rootView.findViewById(R.id.edProfileFragmentActEmail);
         edDogumTarihi = rootView.findViewById(R.id.edProfileFragmentActDogumTarihi);
-
+        KayitOlanKullanicilarinBilgileriniHemenKaydet();
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +81,6 @@ public class ProfileActivityFragment extends Fragment {
                 veriKaydet();
             }
         });
-
-
         return rootView;
 
     }
@@ -95,15 +91,13 @@ public class ProfileActivityFragment extends Fragment {
         stTelefonNo = edTelefonNo.getText().toString();
         stEmail = edEmail.getText().toString();
         stDogumTarihi = edDogumTarihi.getText().toString();
-
-        FirebaseUser user = mAuth.getCurrentUser();
-        String userID = user.getUid();
-        Map<String,String> profileMap = new HashMap();
-        profileMap.put("İsimSoyisim", stIisimSoyisim);
+        String userID = firebaseUser.getUid();
+        Map<String, String> profileMap = new HashMap();
+        profileMap.put("IsimSoyisim", stIisimSoyisim);
         profileMap.put("TelefonNo", stTelefonNo);
-        profileMap.put("Email", user.getEmail().toString());
+        profileMap.put("Email", firebaseUser.getEmail().toString());
         profileMap.put("DogumTarihi", stDogumTarihi);
-        databaseReference.child("Profile1").child(userID).setValue(profileMap)
+        databaseReference.child("Profile").child("ProfileHesapBilgileri").child(userID).setValue(profileMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -121,6 +115,26 @@ public class ProfileActivityFragment extends Fragment {
         });
 
 
+    }
+
+    private void KayitOlanKullanicilarinBilgileriniHemenKaydet() {
+        String userID = firebaseUser.getUid();
+        String IsimSoyisim = getActivity().getIntent().getStringExtra("IsimSoyisim");
+        String userEmail = firebaseUser.getEmail().toString();
+        Map<String, String> profileMap = new HashMap<>();
+        profileMap.put("IsimSoyisim", IsimSoyisim);
+        profileMap.put("Email", userEmail);
+        databaseReference.child("Profile").child("ProfileHesapBilgileri").child(userID).setValue(profileMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getActivity(), "Krall", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Baslarken hata oluştu", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
 }
