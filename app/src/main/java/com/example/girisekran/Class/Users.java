@@ -11,7 +11,15 @@ public class Users {
     String userDogumTarihi;
     String userMeslek;
     String userSehir;
+    String userYas;
 
+    public Users(String userMeslek, String userSehir, String userYas, String userBoy, String userKilo) {
+        this.userMeslek = userMeslek;
+        this.userSehir = userSehir;
+        this.userYas = userYas;
+        this.userBoy = userBoy;
+        this.userKilo = userKilo;
+    }
 
     String userBoy;
     String userKilo;

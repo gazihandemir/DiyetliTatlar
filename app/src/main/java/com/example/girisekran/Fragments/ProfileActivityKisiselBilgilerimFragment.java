@@ -44,6 +44,7 @@ public class ProfileActivityKisiselBilgilerimFragment extends Fragment {
     Button btnUpload;
     String stMeslek, stSehir, stBoy, stYas, stKilo;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
