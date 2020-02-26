@@ -6,9 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -21,15 +19,10 @@ import com.example.girisekran.Hesaplamalar.BMHActivity;
 import com.example.girisekran.Hesaplamalar.GunlukSuMiktariHesaplama;
 import com.example.girisekran.Hesaplamalar.IdealKiloHesaplama;
 import com.example.girisekran.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AkisActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
@@ -47,7 +40,10 @@ public class AkisActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = mAuth.getCurrentUser();
-        mailKaydet();
+      //  ilkGiris();
+
+       // ilkGirisiCek();
+
     }
 
     public void deneme1(View view) {
@@ -71,7 +67,7 @@ public class AkisActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void mailKaydet() {
+ /*   private void mailKaydet() {
         String userID = firebaseUser.getUid();
         //String IsimSoyisim = getIntent().getStringExtra("IsimSoyisim");
         String userEmail = firebaseUser.getEmail().toString();
@@ -90,7 +86,7 @@ public class AkisActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -120,4 +116,10 @@ public class AkisActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+
+
 }

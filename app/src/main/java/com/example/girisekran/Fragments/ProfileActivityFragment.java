@@ -46,7 +46,7 @@ public class ProfileActivityFragment extends Fragment {
     String stTelefonNo;
     String stEmail;
     String stDogumTarihi;
-    String ilkGiris = "1";
+    private static String ilkGiris;
 
     public ProfileActivityFragment() {
     }
@@ -55,7 +55,7 @@ public class ProfileActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        ilkGiris = "1";
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -73,7 +73,6 @@ public class ProfileActivityFragment extends Fragment {
         edDogumTarihi = rootView.findViewById(R.id.edProfileFragmentActDogumTarihi);
 
         // KayitOlanKullanicilarinBilgileriniHemenKaydet();
-
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,24 +85,33 @@ public class ProfileActivityFragment extends Fragment {
                 intent.putExtra("edDogumTarihi", edDogumTarihi.getText().toString());
                 startActivity(intent);
                 */
+
                 veriKaydet();
+             //   bilgileriCek();
+
+
             }
         });
-
-
-        bilgileriCek();
-
-
+        System.out.println("gazi -> ilk giriz 1: " + ilkGiris);
+        System.out.println("gazi ->" + edIsimSoyisim.getText().toString() + "gazi -> ");
+      //  if (ilkGiris.equals("2")) {
+            System.out.println("gazi -> cekme ifine girdi");
+           bilgileriCek();
+        //}
+        System.out.println("gazi ->" + edIsimSoyisim.getText().toString() + "gazi -> ");
+        System.out.println("gazi -> ilk giriz 2: " + ilkGiris);
         return rootView;
 
     }
 
 
     private void veriKaydet() {
+        System.out.println("gazi ->  verikaydete giri "+ilkGiris);
         stIisimSoyisim = edIsimSoyisim.getText().toString();
         stTelefonNo = edTelefonNo.getText().toString();
         stEmail = edEmail.getText().toString();
         stDogumTarihi = edDogumTarihi.getText().toString();
+
         String userID = firebaseUser.getUid();
         Map<String, String> profileMap = new HashMap();
         profileMap.put("IsimSoyisim", stIisimSoyisim);
@@ -155,7 +163,9 @@ public class ProfileActivityFragment extends Fragment {
     }*/
 
     private void bilgileriCek() {
+        System.out.println("gazi -> bilgileri ceke girdi");
         final String userID = firebaseUser.getUid();
+
         databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

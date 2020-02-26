@@ -76,7 +76,7 @@ public class ProfileActivityKisiselBilgilerimFragment extends Fragment {
                 veriKaydet();
             }
         });
-        bilgileriCek();
+     bilgileriCek();
         return rootView;
     }
 
