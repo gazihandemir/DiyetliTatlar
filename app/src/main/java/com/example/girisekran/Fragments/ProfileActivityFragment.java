@@ -159,18 +159,18 @@ public class ProfileActivityFragment extends Fragment {
         databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String getkey = dataSnapshot.getKey();
+              /*  String getkey = dataSnapshot.getKey();
                 String getchildren = dataSnapshot.getChildren().toString();
                 String getvalue = dataSnapshot.getValue().toString();
+                System.out.println("gazi -> getkey" + getkey);
+                System.out.println("gazi -> getchildren" + getchildren);
+                System.out.println("gazi -> getvalue" + getvalue);
+                System.out.println("gazi -> value1 " + userEmail);*/
                 HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
                 String userIsimSoyisim = hashMap.get("IsimSoyisim");
                 String userEmail = hashMap.get("Email");
                 String userTelefonNo = hashMap.get("TelefonNo");
                 String userDogumTarihi = hashMap.get("DogumTarihi");
-                System.out.println("gazi -> getkey" + getkey);
-                System.out.println("gazi -> getchildren" + getchildren);
-                System.out.println("gazi -> getvalue" + getvalue);
-                System.out.println("gazi -> value1 " + userEmail);
                 edEmail.setText(userEmail);
                 edIsimSoyisim.setText(userIsimSoyisim);
                 edTelefonNo.setText(userTelefonNo);

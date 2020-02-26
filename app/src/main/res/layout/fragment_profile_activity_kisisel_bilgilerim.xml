@@ -46,6 +46,7 @@
                     android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/edProfilActivityKisiselBilgilerFragmentMeslek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -83,6 +84,7 @@
                     android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/edProfilActivityKisiselBilgilerFragmentSehir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -124,13 +126,14 @@
                     android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/edProfilActivityKisiselBilgilerFragmentBoy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:hint="Buraya Yazınız"
-                    android:inputType="number|numberDecimal"
 
+                    android:inputType="number|numberDecimal"
                     android:textSize="15sp"></EditText>
 
             </LinearLayout>
@@ -165,6 +168,7 @@
                     android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/edProfilActivityKisiselBilgilerFragmentYas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -204,11 +208,12 @@
                     android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/edProfilActivityKisiselBilgilerFragmentKilo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
 
+                    android:gravity="center_vertical"
                     android:hint="Buraya Yazınız"
                     android:inputType="number|numberDecimal"
                     android:textSize="15sp"></EditText>
@@ -224,6 +229,7 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btnProfilActivityKisiselBilgilerFragmentUpload"
                 style="@style/profileStyledBackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
