@@ -29,15 +29,14 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText email, password, name;
     CheckBox checkBox;
     ImageButton signup;
     Button signin;
+    String stName;
     private StorageReference storageReference;
-
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     static Users users1 = new Users();
@@ -141,13 +140,14 @@ public class SignUpActivity extends AppCompatActivity {
         }*/
     private void profilActivityFragmentBosKaydet() {
 
-
+        stName = name.getText().toString();
         String userID = firebaseUser.getUid();
         Map<String, String> profileMap = new HashMap();
-        profileMap.put("IsimSoyisim", "");
-        profileMap.put("TelefonNo", "");
+        profileMap.put("IsimSoyisim", stName);
+        profileMap.put("TelefonNo", " ");
         profileMap.put("Email", firebaseUser.getEmail().toString());
-        profileMap.put("DogumTarihi", "");
+        profileMap.put("DogumTarihi", " ");
+        profileMap.put("ProfilResmi", " ");
         databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").setValue(profileMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

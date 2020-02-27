@@ -16,38 +16,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <!--
+                <ImageView
+                    android:id="@+id/imgProfileFragmentActProfilResmi"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_profile_image_default"></ImageView>-->
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfileFragmentActProfilResmi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_weight="1"
-
-            android:src="@drawable/profile_round"></ImageView>
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/profiledefault" />
 
         <TextView
             android:id="@+id/tvProfileFragmentActProfilIsmi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical"
             android:text="Gazihan DEMİR"
-
-            android:textSize="20sp"
-            android:textStyle="bold"></TextView>
-
-        <TextView
-            android:id="@+id/tvProfileFragmentActProfilEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center|center_horizontal|center_vertical"
-            android:text="Gazihand@gmail.com"
-            android:textSize="15sp"></TextView>
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
 
     </LinearLayout>
+    d
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -235,8 +238,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:onClick="upload"
-                android:textColor="#FF9301"></Button>
+                android:textColor="#FF9301" />
         </LinearLayout>
 
 

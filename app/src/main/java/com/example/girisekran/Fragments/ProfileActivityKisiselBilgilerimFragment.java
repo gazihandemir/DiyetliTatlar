@@ -76,7 +76,7 @@ public class ProfileActivityKisiselBilgilerimFragment extends Fragment {
                 veriKaydet();
             }
         });
-     bilgileriCek();
+        bilgileriCek();
         return rootView;
     }
 
@@ -115,7 +115,9 @@ public class ProfileActivityKisiselBilgilerimFragment extends Fragment {
     }
 
     private void bilgileriCek() {
-        String userID = firebaseUser.getUid();
+
+
+       String userID = firebaseUser.getUid();
         databaseReference.child("Profile").child(userID).child("ProfileKisiselBilgiler")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
