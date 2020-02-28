@@ -144,10 +144,12 @@ public class SignUpActivity extends AppCompatActivity {
         String userID = firebaseUser.getUid();
         Map<String, String> profileMap = new HashMap();
         profileMap.put("IsimSoyisim", stName);
-        profileMap.put("TelefonNo", " ");
+        profileMap.put("TelefonNo", "");
         profileMap.put("Email", firebaseUser.getEmail().toString());
-        profileMap.put("DogumTarihi", " ");
-        profileMap.put("ProfilResmi", " ");
+        profileMap.put("DogumTarihi", "");
+        String userDefaultPhoto = "https://firebasestorage.googleapis.com/v0/b/diyetlitatlar.appspot.com/o/images%2FuserDefaultPhoto.jpg?alt=media&token=12c9d6d2-208b-4bbc-b9ba-47376f36ae8e";
+        profileMap.put("ProfilResmi", userDefaultPhoto);
+
         databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").setValue(profileMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

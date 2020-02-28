@@ -45,7 +45,6 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 
 public class ProfileActivityFragment extends Fragment {
@@ -105,7 +104,7 @@ public class ProfileActivityFragment extends Fragment {
                 */
 
                 veriKaydet();
-               // bilgileriCek();
+                // bilgileriCek();
                 Toast.makeText(getActivity(), "kisa tıklandı", Toast.LENGTH_SHORT).show();
 
 
@@ -137,14 +136,15 @@ public class ProfileActivityFragment extends Fragment {
 
 
     private void veriKaydet() {
-        UUID uuıdImage = UUID.randomUUID();
-        final String imageName = "images/" + uuıdImage + ".jpg";
+        //  UUID uuıdImage = UUID.randomUUID();
+        //final String imageName = "images/" + uuıdImage + ".jpg";
+        String userID = firebaseUser.getUid();
+        final String imageName = "images/" + userID + ".jpg";
         StorageReference newReference = storageReference.child(imageName);
         newReference.putFile(selected).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 StorageReference profileImageRef = FirebaseStorage.getInstance().getReference(imageName);
-
                 profileImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
@@ -214,6 +214,8 @@ public class ProfileActivityFragment extends Fragment {
 
 
     private void bilgileriCek() {
+        final String userDefaultPhoto = "https://firebasestorage.googleapis.com/v0/b/diyetlitatlar.appspot.com/o/images%2FuserDefaultPhoto.jpg?alt=media&token=12c9d6d2-208b-4bbc-b9ba-47376f36ae8e";
+
         String userID = firebaseUser.getUid();
         // DatabaseReference newReference = firebaseDatabase.getReference("Profile");
         databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -232,9 +234,13 @@ public class ProfileActivityFragment extends Fragment {
                 tvProfilIsmi.setText(userIsimSoyisim);
                 // tvProfilMail.setText(userEmail);
                 edEmail.setFocusable(false);
-                if (userProfileResmiUrl != null) {
+                System.out.println("gazi -> kaydedilen id " + userProfileResmiUrl);
+                if (!userProfileResmiUrl.equals(userDefaultPhoto)) {
                     Picasso.get().load(userProfileResmiUrl).into(imgProfilResmi);
+                } else {
+                    Picasso.get().load(userDefaultPhoto).into(imgProfilResmi);
                 }
+
 
             }
 
@@ -277,10 +283,6 @@ public class ProfileActivityFragment extends Fragment {
 
             }
         });*/
-    }
-
-    public void selectPicture(View view) {
-
     }
 
     @Override

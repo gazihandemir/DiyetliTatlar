@@ -33,8 +33,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/profiledefault" />
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:id="@+id/tvProfileFragmentActProfilIsmi"
@@ -50,7 +49,7 @@
 
 
     </LinearLayout>
-    d
+
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -74,7 +73,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_name"></ImageView>
+                android:src="@drawable/ic_name"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,7 +88,7 @@
                     android:gravity="center_vertical|bottom"
                     android:text="İsim Soyisim"
                     android:textSize="15sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/edProfileFragmentActİsimSoyisim"
@@ -98,7 +97,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:hint="Buraya Yazınız"
-                    android:textSize="15sp"></EditText>
+                    android:textSize="15sp"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -113,7 +112,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_mobile"></ImageView>
+                android:src="@drawable/ic_mobile"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -128,7 +127,7 @@
                     android:gravity="center_vertical|bottom"
                     android:text="Telefon Numarası"
                     android:textSize="15sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/edProfileFragmentActTelefonNumarası"
@@ -156,7 +155,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_email"></ImageView>
+                android:src="@drawable/ic_email"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -171,7 +170,7 @@
                     android:gravity="center_vertical|bottom"
                     android:text="Email"
                     android:textSize="15sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/edProfileFragmentActEmail"
@@ -180,7 +179,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:hint="Buraya Yazınız"
-                    android:textSize="15sp"></EditText>
+                    android:textSize="15sp"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -196,7 +195,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_dob"></ImageView>
+                android:src="@drawable/ic_dob"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -211,7 +210,7 @@
                     android:gravity="center_vertical|bottom"
                     android:text="Doğum Tarihi"
                     android:textSize="15sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/edProfileFragmentActDogumTarihi"
@@ -220,7 +219,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:hint="Buraya Yazınız"
-                    android:textSize="15sp"></EditText>
+                    android:textSize="15sp"/>
 
             </LinearLayout>
         </LinearLayout>
