@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.girisekran.Fragments.DenemeFragment1;
-import com.example.girisekran.Fragments.DenemeFragment2;
 import com.example.girisekran.Hesaplamalar.AGEActivity;
 import com.example.girisekran.Hesaplamalar.BKİActivity;
 import com.example.girisekran.Hesaplamalar.BMHActivity;
@@ -40,9 +39,9 @@ public class AkisActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = mAuth.getCurrentUser();
-      //  ilkGiris();
+        //  ilkGiris();
 
-       // ilkGirisiCek();
+        // ilkGirisiCek();
 
     }
 
@@ -54,10 +53,12 @@ public class AkisActivity extends AppCompatActivity {
     }
 
     public void deneme2(View view) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        Intent intent = new Intent(getApplicationContext(), CalculationsActivity.class);
+        startActivity(intent);
+      /*  FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         DenemeFragment2 firstFragment = new DenemeFragment2();
-        fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();
+        fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();*/
     }
 
     public void deneme5(View view) {
@@ -116,10 +117,6 @@ public class AkisActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
 
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/calculationsActivitiyBesinKalorileri"
+            android:icon="@drawable/ic_calories"
+            android:title="Besin Kalorileri" />
+        <item
+            android:id="@+id/calculationsActivitiyAnasayfa"
+            android:icon="@drawable/ic_anasayfa"
+            android:title="Ana Sayfa" />
+    </group>
+
+
+    <item android:title="Yardım">
+        <menu>
+
+            <item
+                android:id="@+id/CalculationsActivityKafamKarisiyor"
+                android:icon="@drawable/ic_profile_activity_kafam_karisti"
+                android:title="Sayfa Kafamı Karıştırdı !" />
+            <item
+                android:id="@+id/CalculationsActivitySss"
+                android:icon="@drawable/ic_profile_activity_sikca_sorular"
+                android:title="Sıkça Sorulan Sorular" />
+            <item
+                android:id="@+id/CalculationsActivitiyİletisim"
+                android:icon="@drawable/ic_profile_activity_iletisim"
+                android:title="İletişim" />
+        </menu>
+    </item>
+</menu>

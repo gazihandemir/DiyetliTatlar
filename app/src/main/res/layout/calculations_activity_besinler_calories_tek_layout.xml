@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Ahududu"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:id="@+id/tvCalName"
+        android:layout_weight="3"
+        android:textColor="@color/whiteTextColor"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tvCalPorsiyon"
+        android:layout_height="match_parent"
+        android:text="1 su bardağı (148 g)"
+        android:layout_weight="5"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:textColor="@color/whiteTextColor"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="123 kcal"
+        android:id="@+id/tvCalKjal"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_weight="1"
+        android:textColor="@color/whiteTextColor"
+        android:textSize="20sp"
+        />
+</LinearLayout>
