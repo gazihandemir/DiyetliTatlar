@@ -35,10 +35,6 @@ public class BesinCalories {
 
     @Override
     public String toString() {
-        return "BesinCalories{" +
-                "name='" + name + '\'' +
-                ", porsiyon='" + porsiyon + '\'' +
-                ", kcal='" + kcal + '\'' +
-                '}';
+        return name;
     }
 }
