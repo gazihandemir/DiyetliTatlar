@@ -21,13 +21,12 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
     Activity activity;
     String name, porsiyon, kjal;
 
-    public BesinCaloriesAdapter(Context context, List<BesinCalories> list, Activity activity, String name, String porsiyon, String kjal) {
+    public BesinCaloriesAdapter(Context context, List<BesinCalories> list, Activity activity) {
         this.context = context;
         this.list = list;
         this.activity = activity;
-        this.name = name;
-        this.porsiyon = porsiyon;
-        this.kjal = kjal;
+
+
     }
 
     @NonNull
@@ -40,9 +39,11 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        holder.tvName.setText(list.get(position).toString());
+        BesinCalories besinCalories = list.get(position);
+        holder.setData(besinCalories, position);
+       /* holder.tvName.setText(list.get(position).toString());
         holder.tvPorsiyon.setText(list.get(position).toString());
-        holder.tvKjal.setText(list.get(position).toString());
+        holder.tvKjal.setText(list.get(position).toString());*/
     }
 
     @Override
@@ -58,6 +59,12 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
             tvName = itemView.findViewById(R.id.tvCalName);
             tvPorsiyon = itemView.findViewById(R.id.tvCalPorsiyon);
             tvKjal = itemView.findViewById(R.id.tvCalKjal);
+        }
+
+        public void setData(BesinCalories besinCalories, int position) {
+            this.tvName.setText(besinCalories.getName());
+            this.tvPorsiyon.setText(besinCalories.getPorsiyon());
+            this.tvKjal.setText(besinCalories.getCalories());
         }
     }
 }

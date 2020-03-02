@@ -11,9 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.girisekran.Adapter.BesinCaloriesAdapter;
 import com.example.girisekran.Class.BesinCalories;
+import com.example.girisekran.Class.BesinCaloriesDetails;
 import com.example.girisekran.R;
+import com.google.gson.Gson;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -24,8 +29,7 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
     RecyclerView recyclerView;
     BesinCaloriesAdapter besinCaloriesAdapter;
     List<BesinCalories> list;
-    String name, porsiyon, kjal;
-
+    BesinCalories besin;
     public CalculationsActivityBesinlerCaloriesFragment() {
         // Required empty public constructor
     }
@@ -34,19 +38,40 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        BesinCalories besin = new BesinCalories("muz", "porsiyon", "50 kjal");
-        BesinCalories besin2 = new BesinCalories("muz12", "porsiyon12", "50 kjal12");
 
-        list = new ArrayList<>();
-        list.add(besin);
-        list.add(besin2);
+        jsonOku();
+
         View rootView = inflater.inflate(R.layout.fragment_calculations_activity_besinler_calories, container, false);
         recyclerView = rootView.findViewById(R.id.calculationsActivitiyBesinlerCaloriesRecyclerView);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
-        besinCaloriesAdapter = new BesinCaloriesAdapter(getActivity(), list, getActivity(), name, porsiyon, kjal);
+        besinCaloriesAdapter = new BesinCaloriesAdapter(getActivity(), list, getActivity());
         recyclerView.setAdapter(besinCaloriesAdapter);
         besinCaloriesAdapter.notifyDataSetChanged();
         return rootView;
+    }
+    public void jsonOku(){
+        besin = new BesinCalories();
+
+        BesinCaloriesDetails besinlerList = new BesinCaloriesDetails();
+        try {
+            // load file
+            BufferedReader jsonReader = new BufferedReader(new InputStreamReader(this.getResources().openRawResource(R.raw.besinler)));
+            StringBuilder jsonBuilder = new StringBuilder();
+            for (String line = null; (line = jsonReader.readLine()) != null; ) {
+                jsonBuilder.append(line).append("\n");
+            }
+
+            Gson gson = new Gson();
+            besinlerList = gson.fromJson(jsonBuilder.toString(), BesinCaloriesDetails.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        list = new LinkedList<>();
+        for (int i = 0; i < besinlerList.getBesinler().size(); i++) {
+            list.add(besin = new BesinCalories(besinlerList.getBesinler().get(i).getName(), besinlerList.getBesinler().get(i).getPorsiyon()
+                    , besinlerList.getBesinler().get(i).getCalories()));
+        }
     }
 }

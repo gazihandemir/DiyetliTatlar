@@ -1,12 +1,30 @@
 package com.example.girisekran.Class;
 
-public class BesinCalories {
-    private String name,porsiyon,kcal;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public BesinCalories(String name, String porsiyon, String kcal) {
+public class BesinCalories {
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("porsiyon")
+    @Expose
+    private String porsiyon;
+    @SerializedName("calories")
+    @Expose
+    private String calories;
+
+    public BesinCalories() {
+
+    }
+
+    public BesinCalories(String name, String porsiyon, String calories) {
         this.name = name;
         this.porsiyon = porsiyon;
-        this.kcal = kcal;
+        this.calories = calories;
     }
 
     public String getName() {
@@ -25,16 +43,20 @@ public class BesinCalories {
         this.porsiyon = porsiyon;
     }
 
-    public String getKcal() {
-        return kcal;
+    public String getCalories() {
+        return calories;
     }
 
-    public void setKcal(String kcal) {
-        this.kcal = kcal;
+    public void setCalories(String calories) {
+        this.calories = calories;
     }
 
-    @Override
-    public String toString() {
-        return name;
+    public String getId() {
+        return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }
