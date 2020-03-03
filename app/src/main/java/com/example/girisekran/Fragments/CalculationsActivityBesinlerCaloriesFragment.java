@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -18,18 +19,17 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
     RecyclerView recyclerView;
     BesinCaloriesAdapter besinCaloriesAdapter;
     List<BesinCalories> list;
     BesinCalories besin;
+    SearchView searchView;
+
     public CalculationsActivityBesinlerCaloriesFragment() {
         // Required empty public constructor
     }
@@ -42,6 +42,20 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
         jsonOku();
 
         View rootView = inflater.inflate(R.layout.fragment_calculations_activity_besinler_calories, container, false);
+        searchView = rootView.findViewById(R.id.calculationsActivitiySearchView);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                besinCaloriesAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
         recyclerView = rootView.findViewById(R.id.calculationsActivitiyBesinlerCaloriesRecyclerView);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
@@ -50,7 +64,8 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
         besinCaloriesAdapter.notifyDataSetChanged();
         return rootView;
     }
-    public void jsonOku(){
+
+    public void jsonOku() {
         besin = new BesinCalories();
 
         BesinCaloriesDetails besinlerList = new BesinCaloriesDetails();
@@ -68,10 +83,12 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        list = new LinkedList<>();
+        list = new ArrayList<>();
         for (int i = 0; i < besinlerList.getBesinler().size(); i++) {
             list.add(besin = new BesinCalories(besinlerList.getBesinler().get(i).getName(), besinlerList.getBesinler().get(i).getPorsiyon()
                     , besinlerList.getBesinler().get(i).getCalories()));
         }
     }
+
+
 }

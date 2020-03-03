@@ -13,12 +13,12 @@
 
         android:layout_height="wrap_content">
 
-        <EditText
+        <SearchView
+            android:id="@+id/calculationsActivitiySearchView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Aramak için yazınız "
-            android:textColor="@color/whiteTextColor"
-            android:textColorHint="@color/whiteTextColor" />
+            android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -29,38 +29,35 @@
         <TextView
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:text="Besin"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
-            android:gravity="center_vertical"
             android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Besin"
             android:textColor="@color/whiteTextColor"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:text="1 Porsiyon"
-            android:gravity="center_vertical"
-            android:layout_weight="1"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="1 Porsiyon"
             android:textColor="@color/whiteTextColor"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="Calories"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
-            android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:text="Calories"
             android:textColor="@color/whiteTextColor"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
     </LinearLayout>
 

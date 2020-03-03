@@ -54,4 +54,5 @@ public class CalculationsActivity extends AppCompatActivity implements Navigatio
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
