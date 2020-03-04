@@ -20,18 +20,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
     RecyclerView recyclerView;
     BesinCaloriesAdapter besinCaloriesAdapter;
-    List<BesinCalories> list;
+    ArrayList<BesinCalories> list;
     BesinCalories besin;
     SearchView searchView;
 
     public CalculationsActivityBesinlerCaloriesFragment() {
-        // Required empty public constructor
     }
 
 
@@ -44,23 +42,14 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_calculations_activity_besinler_calories, container, false);
         searchView = rootView.findViewById(R.id.calculationsActivitiySearchView);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                besinCaloriesAdapter.getFilter().filter(newText);
-                return true;
-            }
-        });
         recyclerView = rootView.findViewById(R.id.calculationsActivitiyBesinlerCaloriesRecyclerView);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
         besinCaloriesAdapter = new BesinCaloriesAdapter(getActivity(), list, getActivity());
         recyclerView.setAdapter(besinCaloriesAdapter);
+
+
         besinCaloriesAdapter.notifyDataSetChanged();
         return rootView;
     }

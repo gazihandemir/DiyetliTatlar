@@ -5,27 +5,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.girisekran.Class.BesinCalories;
-import com.example.girisekran.Class.FilterHelper;
 import com.example.girisekran.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdapter.ViewHolder> implements Filterable {
+public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdapter.ViewHolder> {
     Context context;
     List<BesinCalories> list;
     Activity activity;
     String name, porsiyon, kjal;
-    BesinCaloriesAdapter suankiAdapter;
-    FilterHelper myFilter = new FilterHelper((ArrayList<BesinCalories>) list, suankiAdapter);
 
     public BesinCaloriesAdapter(Context context, List<BesinCalories> list, Activity activity) {
         this.context = context;
@@ -57,9 +51,6 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
         return list.size();
     }
 
-    public void setFilter(Object values) {
-        list = (List<BesinCalories>) values;
-    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -80,8 +71,4 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
     }
 
 
-    @Override
-    public Filter getFilter() {
-        return myFilter;
-    }
 }
