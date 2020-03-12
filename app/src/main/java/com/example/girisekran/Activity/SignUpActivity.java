@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -41,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     static Users users1 = new Users();
     private FirebaseUser firebaseUser;
+    private FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         email = (EditText) findViewById(R.id.edSignUpActEmail);
         password = (EditText) findViewById(R.id.edSignUpActSifre);
         name = (EditText) findViewById(R.id.edSignUpActIsim);
@@ -86,6 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
                             System.out.println("user email : " + users1.getUserEmail());
                             profilActivityFragmentBosKaydet();
                             profileActivityKisiselBilgilerFragmentBosKaydet();
+                            profileActivityDiyetisyenBilgilerimFragmentFireStoreBosKaydet();
                         } else {
                             Toast.makeText(SignUpActivity.this, "Kayıt oluşturulamadı complateListener", Toast.LENGTH_SHORT).show();
                         }
@@ -195,5 +199,30 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void profileActivityDiyetisyenBilgilerimFragmentFireStoreBosKaydet() {
+        Map<String, String> hashmap = new HashMap<>();
+        hashmap.put("Email", firebaseUser.getEmail().toString());
+        hashmap.put("Olcüm", "");
+        hashmap.put("Hastalik", "");
+        hashmap.put("Tahlil", "");
+        hashmap.put("Hikaye", "");
+        hashmap.put("id", firebaseUser.getUid().toString());
+        firebaseFirestore.collection("ProfileDiyetisyenBilgileri").document(firebaseUser.getUid())
+                .set(hashmap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(SignUpActivity.this, "FireStore Basarili", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "FireStore Basarisiz", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

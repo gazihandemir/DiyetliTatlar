@@ -2,15 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activity.ProfileActivity"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="408dp"
         android:layout_height="192dp"
-
         android:background="@drawable/background"
-
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
