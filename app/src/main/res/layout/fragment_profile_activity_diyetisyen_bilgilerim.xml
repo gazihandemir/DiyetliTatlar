@@ -78,6 +78,7 @@
                     android:textStyle="bold"></TextView>
 
                 <TextView
+                    android:id="@+id/tvProfileActDiyetisyenBilgilerimÖlcüm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -117,6 +118,7 @@
                     android:textStyle="bold"></TextView>
 
                 <TextView
+                    android:id="@+id/tvProfileActDiyetisyenBilgilerimHastalikAdi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -159,6 +161,7 @@
                     android:textStyle="bold"></TextView>
 
                 <TextView
+                    android:id="@+id/tvProfileActDiyetisyenBilgilerimTahlil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -197,6 +200,7 @@
                     android:textStyle="bold"></TextView>
 
                 <TextView
+                    android:id="@+id/tvProfileActDiyetisyenBilgilerimHikaye"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"

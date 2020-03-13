@@ -209,7 +209,7 @@ public class SignUpActivity extends AppCompatActivity {
         hashmap.put("Tahlil", "");
         hashmap.put("Hikaye", "");
         hashmap.put("id", firebaseUser.getUid().toString());
-        firebaseFirestore.collection("ProfileDiyetisyenBilgileri").document(firebaseUser.getUid())
+        firebaseFirestore.collection("ProfileDiyetisyenBilgileri").document(firebaseUser.getEmail().toString())
                 .set(hashmap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

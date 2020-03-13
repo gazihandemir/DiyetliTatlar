@@ -219,7 +219,7 @@ public class ProfileActivityFragment extends Fragment {
         String userID = firebaseUser.getUid();
         // DatabaseReference newReference = firebaseDatabase.getReference("Profile");
         databaseReference.child("Profile").child(userID).child("ProfileHesapBilgileri").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+                @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
                 String userIsimSoyisim = hashMap.get("IsimSoyisim");
