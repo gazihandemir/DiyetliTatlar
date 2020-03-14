@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ProfileActivity">
+
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
@@ -34,8 +35,6 @@
 
             android:textSize="30sp"
             android:textStyle="bold"></TextView>
-
-
 
 
     </LinearLayout>
@@ -83,7 +82,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="53-90-60-110"
                     android:textSize="16sp"></TextView>
 
             </LinearLayout>
@@ -123,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="Şeker Hastası"
+                    android:text=""
                     android:textSize="15sp">
 
                 </TextView>
@@ -166,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="ph+ değeri yüksek"
+                    android:text=""
                     android:textSize="15sp"></TextView>
 
             </LinearLayout>
@@ -184,6 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="101dp"
                 android:src="@drawable/sicon_hikaye"></ImageView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -204,7 +203,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="Kısa Hikayeler gerçek ya da gerçeğe yakın bir olayı aktaran kısa düz yazı şeklindeki anlatıya öykü veya eski adıyla hikâye denir. Kısa hikayenin kısa oluşu, yalın bir olay örgüsüne sahip olması, genellikle önemli bir olay ya da sahne aracılığıyla tek ve yoğun bir etki uyandırması ve az sayıda karaktere yer vermesiyle roman ve diğer anakın bir olayı aktaran eya eandırmasılır."
+                    android:text=""
                     android:textSize="15sp"></TextView>
 
             </LinearLayout>

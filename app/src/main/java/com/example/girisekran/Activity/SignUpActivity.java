@@ -90,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                             profilActivityFragmentBosKaydet();
                             profileActivityKisiselBilgilerFragmentBosKaydet();
                             profileActivityDiyetisyenBilgilerimFragmentFireStoreBosKaydet();
+                            profileActivityBasariHikayemFragmentFireStoreBosKaydet();
                         } else {
                             Toast.makeText(SignUpActivity.this, "Kayıt oluşturulamadı complateListener", Toast.LENGTH_SHORT).show();
                         }
@@ -214,7 +215,37 @@ public class SignUpActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(SignUpActivity.this, "FireStore Basarili", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, "FireStore diyetisyen bilgilerim Basarili", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "FireStore Basarisiz", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+    public void profileActivityBasariHikayemFragmentFireStoreBosKaydet() {
+        Map<String, String> hashmap = new HashMap<>();
+        hashmap.put("Email", firebaseUser.getEmail().toString());
+        hashmap.put("1.hafta", "");
+        hashmap.put("2.hafta", "");
+        hashmap.put("3.hafta", "");
+        hashmap.put("4.hafta", "");
+        hashmap.put("5.hafta", "");
+        hashmap.put("6.hafta", "");
+        hashmap.put("7.hafta", "");
+        hashmap.put("8.hafta", "");
+        hashmap.put("9.hafta", "");
+        hashmap.put("10.hafta", "");
+        firebaseFirestore.collection("ProfileBasariHikayem").document(firebaseUser.getEmail().toString())
+                .set(hashmap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(SignUpActivity.this, "FireStore basari hikayem Basarili", Toast.LENGTH_SHORT).show();
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
