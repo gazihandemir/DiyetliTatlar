@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.girisekran.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,7 +59,7 @@ public class ProfileActivityDiyetisyenBilgilerimFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Map<String, Object> hashMap = documentSnapshot.getData();
-                System.out.println("gazi2" + documentSnapshot.getData());
+                System.out.println("gazi21" + documentSnapshot.getData());
                 String userEmail = (String) hashMap.get("Email");
                 String userOlcüm = (String) hashMap.get("Olcüm");
                 String userHastalikAdi = (String) hashMap.get("Hastalik");
@@ -69,6 +72,12 @@ public class ProfileActivityDiyetisyenBilgilerimFragment extends Fragment {
                 tvTahlil.setText(userTahlil);
                 tvHikaye.setText(userHikaye);
 
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Veriler Cekilemedi ! ", Toast.LENGTH_SHORT).show();
             }
         });
 

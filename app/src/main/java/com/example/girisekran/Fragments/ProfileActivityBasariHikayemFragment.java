@@ -2,25 +2,31 @@ package com.example.girisekran.Fragments;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.girisekran.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 /**
@@ -28,29 +34,41 @@ import java.util.ArrayList;
  */
 public class ProfileActivityBasariHikayemFragment extends Fragment {
     BarChart barChart;
+    private FirebaseUser firebaseUser;
+    private FirebaseAuth mAuth;
+    DocumentReference docRef;
+    private FirebaseFirestore firebaseFirestore;
+    String birinciHafta = "0", ikinciHafta = "0", ücüncüHafta = "0", dördüncüHafta = "0";
 
-/*
-    ProgressBar progressBar1;
-    ProgressBar progressBar2;
-    ProgressBar progressBar3;
-    ProgressBar progressBar4;
-    ProgressBar progressBar5;
-    static String progressBar1Deger = "30";
-    static String progressBar2Deger = "40";
-    static String progressBar3Deger = "10";
-    static String progressBar4Deger = "65";
-    static String progressBar5Deger = "100";
-    TextView tv1, tv2, tv3, tv4, tv5;
-*/
+
+    /*
+        ProgressBar progressBar1;
+        ProgressBar progressBar2;
+        ProgressBar progressBar3;
+        ProgressBar progressBar4;
+        ProgressBar progressBar5;
+        static String progressBar1Deger = "30";
+        static String progressBar2Deger = "40";
+        static String progressBar3Deger = "10";
+        static String progressBar4Deger = "65";
+        static String progressBar5Deger = "100";
+        TextView tv1, tv2, tv3, tv4, tv5;
+    */
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("gaziilkönce : onCreate");
+
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        System.out.println("gaziilkönce : onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_profile_activity_basari_hikayem, container, false);
 
        /* progressBar1 = rootView.findViewById(R.id.progresbar1);
@@ -82,27 +100,71 @@ public class ProfileActivityBasariHikayemFragment extends Fragment {
         tv4.setText(progressBar4Deger + "kg");
         tv5.setText(progressBar5Deger + "kg");*/
         barChart = rootView.findViewById(R.id.barChart);
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        bilgileriCek();
+
+
+        System.out.println("gazi Grafik Çıktı");
+        return rootView;
+    }
+
+    private ArrayList<BarEntry> dataValues1() {
+        ArrayList<BarEntry> dataVals = new ArrayList<>();
+        int birinciHaftaInt = Integer.parseInt(birinciHafta);
+        int ikinciHaftaInt = Integer.parseInt(ikinciHafta);
+        int ücüncüHaftaInt = Integer.parseInt(ücüncüHafta);
+        int dördüncüHaftaInt = Integer.parseInt(dördüncüHafta);
+        //   System.out.println("gazidatavalues icin : " + birinciHafta + ikinciHafta + ücüncüHafta + dördüncüHafta);
+        // System.out.println("gazidatavalues icin int : " + birinciHaftaInt + ikinciHaftaInt + ücüncüHaftaInt + dördüncüHaftaInt);
+        dataVals.add(new BarEntry(1f, birinciHaftaInt));
+        dataVals.add(new BarEntry(2f, ikinciHaftaInt));
+        dataVals.add(new BarEntry(3f, ücüncüHaftaInt));
+        dataVals.add(new BarEntry(4f, dördüncüHaftaInt));
+
+        return dataVals;
+
+    }
+
+
+    private void bilgileriCek() {
+        docRef = firebaseFirestore.collection("ProfileBasariHikayesi").document(firebaseUser.getEmail().toString());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Map<String, Object> hashMap = documentSnapshot.getData();
+                System.out.println("gazi2" + documentSnapshot.getData());
+                birinciHafta = (String) hashMap.get("haft1a");
+                ikinciHafta = (String) hashMap.get("haft2a");
+                ücüncüHafta = (String) hashMap.get("haft3a");
+                dördüncüHafta = (String) hashMap.get("haft4a");
+                System.out.println("gazi Api Çıktı");
+
+                System.out.println("gazilistener icin : " + birinciHafta + ikinciHafta + ücüncüHafta + dördüncüHafta);
+                String basariHilkayesi = (String) hashMap.get("basariHikayesi");
+                grafikOlustur();
+            }
+
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Veriler Cekilemedi ! ", Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+    }
+
+    public void grafikOlustur() {
         BarDataSet barDataSet1 = new BarDataSet(dataValues1(), "Kilo");
         barDataSet1.setColors(ColorTemplate.MATERIAL_COLORS);
         BarData barData = new BarData();
         barData.addDataSet(barDataSet1);
         barChart.setData(barData);
         barChart.invalidate();
-        return rootView;
     }
-    private ArrayList<BarEntry> dataValues1() {
-        ArrayList<BarEntry> dataVals = new ArrayList<>();
-        dataVals.add(new BarEntry(1f, 98));
-        dataVals.add(new BarEntry(2f, 96));
-        dataVals.add(new BarEntry(3f, 92));
-        dataVals.add(new BarEntry(4f, 88));
-        dataVals.add(new BarEntry(5f, 87));
-        dataVals.add(new BarEntry(6f, 86));
-        dataVals.add(new BarEntry(7f, 86));
-        dataVals.add(new BarEntry(8f, 87));
-        dataVals.add(new BarEntry(9f, 90));
-        dataVals.add(new BarEntry(10f, 87));
-        return dataVals;
 
-    }
 }

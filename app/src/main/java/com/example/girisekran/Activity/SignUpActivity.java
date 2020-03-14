@@ -229,17 +229,12 @@ public class SignUpActivity extends AppCompatActivity {
     public void profileActivityBasariHikayemFragmentFireStoreBosKaydet() {
         Map<String, String> hashmap = new HashMap<>();
         hashmap.put("Email", firebaseUser.getEmail().toString());
-        hashmap.put("1.hafta", "");
-        hashmap.put("2.hafta", "");
-        hashmap.put("3.hafta", "");
-        hashmap.put("4.hafta", "");
-        hashmap.put("5.hafta", "");
-        hashmap.put("6.hafta", "");
-        hashmap.put("7.hafta", "");
-        hashmap.put("8.hafta", "");
-        hashmap.put("9.hafta", "");
-        hashmap.put("10.hafta", "");
-        firebaseFirestore.collection("ProfileBasariHikayem").document(firebaseUser.getEmail().toString())
+        hashmap.put("haft1a", "");
+        hashmap.put("haft2a", "");
+        hashmap.put("haft3a", "");
+        hashmap.put("haft4a", "");
+        hashmap.put("basariHikayesi","");
+        firebaseFirestore.collection("ProfileBasariHikayesi").document(firebaseUser.getEmail().toString())
                 .set(hashmap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
