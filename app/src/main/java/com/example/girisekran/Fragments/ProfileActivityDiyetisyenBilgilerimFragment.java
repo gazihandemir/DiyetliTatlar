@@ -34,7 +34,6 @@ public class ProfileActivityDiyetisyenBilgilerimFragment extends Fragment {
     DocumentReference docRef;
 
     public ProfileActivityDiyetisyenBilgilerimFragment() {
-        // Required empty public constructor
     }
 
 

@@ -2,7 +2,6 @@
 <LinearLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,5 +24,26 @@
             ></com.github.mikephil.charting.charts.BarChart>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/sicon_hikaye" />
+
+        <TextView
+            android:id="@+id/tvProfileActivityBasariHikayem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

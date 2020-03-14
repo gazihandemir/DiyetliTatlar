@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class ProfileActivityBasariHikayemFragment extends Fragment {
     DocumentReference docRef;
     private FirebaseFirestore firebaseFirestore;
     String birinciHafta = "0", ikinciHafta = "0", ücüncüHafta = "0", dördüncüHafta = "0";
+    TextView tvBasariHikayem;
 
 
     /*
@@ -100,13 +102,11 @@ public class ProfileActivityBasariHikayemFragment extends Fragment {
         tv4.setText(progressBar4Deger + "kg");
         tv5.setText(progressBar5Deger + "kg");*/
         barChart = rootView.findViewById(R.id.barChart);
+        tvBasariHikayem = rootView.findViewById(R.id.tvProfileActivityBasariHikayem);
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         bilgileriCek();
-
-
-        System.out.println("gazi Grafik Çıktı");
         return rootView;
     }
 
@@ -118,11 +118,10 @@ public class ProfileActivityBasariHikayemFragment extends Fragment {
         int dördüncüHaftaInt = Integer.parseInt(dördüncüHafta);
         //   System.out.println("gazidatavalues icin : " + birinciHafta + ikinciHafta + ücüncüHafta + dördüncüHafta);
         // System.out.println("gazidatavalues icin int : " + birinciHaftaInt + ikinciHaftaInt + ücüncüHaftaInt + dördüncüHaftaInt);
-        dataVals.add(new BarEntry(1f, birinciHaftaInt));
-        dataVals.add(new BarEntry(2f, ikinciHaftaInt));
-        dataVals.add(new BarEntry(3f, ücüncüHaftaInt));
-        dataVals.add(new BarEntry(4f, dördüncüHaftaInt));
-
+        dataVals.add(new BarEntry(0, birinciHaftaInt));
+        dataVals.add(new BarEntry(7, ikinciHaftaInt));
+        dataVals.add(new BarEntry(14, ücüncüHaftaInt));
+        dataVals.add(new BarEntry(21, dördüncüHaftaInt));
         return dataVals;
 
     }
@@ -143,6 +142,7 @@ public class ProfileActivityBasariHikayemFragment extends Fragment {
 
                 System.out.println("gazilistener icin : " + birinciHafta + ikinciHafta + ücüncüHafta + dördüncüHafta);
                 String basariHilkayesi = (String) hashMap.get("basariHikayesi");
+                tvBasariHikayem.setText(basariHilkayesi);
                 grafikOlustur();
             }
 
@@ -165,6 +165,7 @@ public class ProfileActivityBasariHikayemFragment extends Fragment {
         barData.addDataSet(barDataSet1);
         barChart.setData(barData);
         barChart.invalidate();
+        barData.setValueTextSize(10);
     }
 
 }
