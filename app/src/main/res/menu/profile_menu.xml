@@ -22,7 +22,10 @@
             android:id="@+id/profileActivityNavBasariHikayem"
             android:icon="@drawable/ic_profile_activity_basari_hikayem"
             android:title="Başarı hikayem" />
-
+        <item
+            android:id="@+id/profileActivitiyAnasayfa"
+            android:icon="@drawable/ic_anasayfa"
+            android:title="Ana Sayfa" />
     </group>
 
 

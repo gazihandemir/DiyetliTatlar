@@ -93,6 +93,10 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             case R.id.profileActivityNavKafamKaristi:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner, new ProfileActivityKafamKarisiyorFragment()).commit();
                 break;
+            case R.id.profileActivitiyAnasayfa:
+                Intent intent1 = new Intent(getApplicationContext(),AkisActivity.class);
+                startActivity(intent1);
+                break;
             case R.id.profileActivityNavSikcaSorulanSorular:
                 Toast.makeText(this, "S.S.S", Toast.LENGTH_SHORT).show();
                 break;
@@ -102,8 +106,8 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.profileActivityNavCikis:
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-                startActivity(intent);
+                Intent intent2 = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent2);
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
