@@ -29,6 +29,7 @@ public class CalculationsActivitySuHesaplamaFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_calculations_activity_su_hesaplama, container, false);
         edKilo = rootView.findViewById(R.id.edSuActKilo);
         tvCevap = rootView.findViewById(R.id.tvSuActCevap);
+        btnHesapla = rootView.findViewById(R.id.btnSuActHesapla);
         tvCevap.setVisibility(View.INVISIBLE);
         hesaplaSu();
         return rootView;

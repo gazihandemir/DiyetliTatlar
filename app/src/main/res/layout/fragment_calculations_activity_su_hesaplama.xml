@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".Hesaplamalar.GunlukSuMiktariHesaplama">
+    tools:context=".Activity.CalculationsActivity">
 
     <TextView
         android:id="@+id/textView5"
@@ -42,22 +42,23 @@
         android:textColor="#4ddbff"
         android:textColorHint="#4ddbff"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnSuActHesapla"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSuActHesapla"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:text="HESAPLA"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_background"
-        android:onClick="hesaplaSu"
-        android:text="Hesapla"
+
+
         app:layout_constraintBottom_toTopOf="@+id/tvSuActCevap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,5 +80,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSuActHesapla" />
 </androidx.constraintlayout.widget.ConstraintLayout>

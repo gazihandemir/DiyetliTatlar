@@ -16,10 +16,6 @@
             android:icon="@drawable/ic_su_miktari_hesaplama"
             android:title="Günlük Su Miktarı Hesaplama" />
         <item
-            android:id="@+id/calculationsActivitiyBkiHesaplama"
-            android:icon="@drawable/ic_bki_hesaplama"
-            android:title="BKİ Hesaplama" />
-        <item
             android:id="@+id/calculationsActivitiyAgeHesaplama"
             android:icon="@drawable/ic_age_hesaplama"
             android:title="AGE Hesaplama" />
