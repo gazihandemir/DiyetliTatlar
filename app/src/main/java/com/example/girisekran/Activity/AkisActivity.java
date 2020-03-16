@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.girisekran.Fragments.DenemeFragment1;
-import com.example.girisekran.Hesaplamalar.AGEActivity;
 import com.example.girisekran.Hesaplamalar.BKİActivity;
 import com.example.girisekran.Hesaplamalar.BMHActivity;
 import com.example.girisekran.Hesaplamalar.GunlukSuMiktariHesaplama;

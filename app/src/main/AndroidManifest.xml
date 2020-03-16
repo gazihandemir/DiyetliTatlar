@@ -23,7 +23,6 @@
         <activity android:name=".Activity.ProfileActivity" />
         <activity android:name=".Activity.AkisActivity" />
         <activity android:name=".Hesaplamalar.GunlukSuMiktariHesaplama" />
-        <activity android:name=".Hesaplamalar.AGEActivity" />
         <activity android:name=".Hesaplamalar.BMHActivity" />
         <activity android:name=".Hesaplamalar.IdealKiloHesaplama" />
         <activity android:name=".Hesaplamalar.BKİActivity" />

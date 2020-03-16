@@ -1,24 +1,20 @@
-package com.example.girisekran.Fragments;
-
+package com.example.girisekran.Fragments.Calculations;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.girisekran.R;
+import androidx.fragment.app.Fragment;
 
+import com.example.girisekran.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileActivityKafamKarisiyorFragment extends Fragment {
+public class CalculationsActivityIdealKiloHesaplamaFragment extends Fragment {
 
-
-    public ProfileActivityKafamKarisiyorFragment() {
+    public CalculationsActivityIdealKiloHesaplamaFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +23,6 @@ public class ProfileActivityKafamKarisiyorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_activity_kafam_karisiyor, container, false);
+        return inflater.inflate(R.layout.fragment_calculations_activity_ideal_kilo_hesaplama, container, false);
     }
-
 }

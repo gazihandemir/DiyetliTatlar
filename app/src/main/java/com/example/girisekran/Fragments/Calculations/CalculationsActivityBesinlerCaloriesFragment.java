@@ -1,4 +1,4 @@
-package com.example.girisekran.Fragments;
+package com.example.girisekran.Fragments.Calculations;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

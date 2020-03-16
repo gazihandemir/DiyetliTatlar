@@ -1,4 +1,4 @@
-package com.example.girisekran.Fragments;
+package com.example.girisekran.Fragments.Profile;
 
 
 import android.os.Bundle;

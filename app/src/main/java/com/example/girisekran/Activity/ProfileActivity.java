@@ -17,11 +17,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.girisekran.Fragments.ProfileActivityBasariHikayemFragment;
-import com.example.girisekran.Fragments.ProfileActivityDiyetisyenBilgilerimFragment;
-import com.example.girisekran.Fragments.ProfileActivityFragment;
-import com.example.girisekran.Fragments.ProfileActivityKafamKarisiyorFragment;
-import com.example.girisekran.Fragments.ProfileActivityKisiselBilgilerimFragment;
+import com.example.girisekran.Fragments.Profile.ProfileActivityBasariHikayemFragment;
+import com.example.girisekran.Fragments.Profile.ProfileActivityDiyetisyenBilgilerimFragment;
+import com.example.girisekran.Fragments.Profile.ProfileActivityFragment;
+import com.example.girisekran.Fragments.Profile.ProfileActivityKafamKarisiyorFragment;
+import com.example.girisekran.Fragments.Profile.ProfileActivityKisiselBilgilerimFragment;
 import com.example.girisekran.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;

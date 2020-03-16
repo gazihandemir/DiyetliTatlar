@@ -11,7 +11,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.girisekran.Fragments.CalculationsActivityBesinlerCaloriesFragment;
+import com.example.girisekran.Fragments.Calculations.CalculationsActivityAGEHesaplamaFragment;
+import com.example.girisekran.Fragments.Calculations.CalculationsActivityBKIHesaplamaFragment;
+import com.example.girisekran.Fragments.Calculations.CalculationsActivityBMHHesaplamaFragment;
+import com.example.girisekran.Fragments.Calculations.CalculationsActivityBesinlerCaloriesFragment;
+import com.example.girisekran.Fragments.Calculations.CalculationsActivityIdealKiloHesaplamaFragment;
+import com.example.girisekran.Fragments.Calculations.CalculationsActivitySuHesaplamaFragment;
 import com.example.girisekran.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -47,9 +52,30 @@ public class CalculationsActivity extends AppCompatActivity implements Navigatio
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner_cal,
                         new CalculationsActivityBesinlerCaloriesFragment()).commit();
                 break;
+            case R.id.calculationsActivitiyAgeHesaplama:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner_cal,
+                        new CalculationsActivityAGEHesaplamaFragment()).commit();
+                break;
+            case R.id.calculationsActivitiyBkiHesaplama:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner_cal,
+                        new CalculationsActivityBKIHesaplamaFragment()).commit();
+                break;
+            case R.id.calculationsActivitiyBmhHesaplama:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner_cal,
+                        new CalculationsActivityBMHHesaplamaFragment()).commit();
+                break;
+            case R.id.calculationsActivitiyIdealKiloHesaplama:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner_cal,
+                        new CalculationsActivityIdealKiloHesaplamaFragment()).commit();
+                break;
+            case R.id.calculationsActivitygünlükSuMiktariHesaplama:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conteiner_cal,
+                        new CalculationsActivitySuHesaplamaFragment()).commit();
+                break;
             case R.id.calculationsActivitiyAnasayfa:
                 Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
                 startActivity(intent);
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
-
         <item
             android:id="@+id/calculationsActivitiyBesinKalorileri"
             android:icon="@drawable/ic_calories"
             android:title="Besin Kalorileri" />
         <item
+            android:id="@+id/calculationsActivitiyIdealKiloHesaplama"
+            android:icon="@drawable/ic_bki_hesaplama"
+            android:title="İdeal Kilo Hesaplama" />
+        <item
+            android:id="@+id/calculationsActivitygünlükSuMiktariHesaplama"
+            android:icon="@drawable/ic_su_miktari_hesaplama"
+            android:title="Günlük Su Miktarı Hesaplama" />
+        <item
+            android:id="@+id/calculationsActivitiyBkiHesaplama"
+            android:icon="@drawable/ic_bki_hesaplama"
+            android:title="BKİ Hesaplama" />
+        <item
+            android:id="@+id/calculationsActivitiyAgeHesaplama"
+            android:icon="@drawable/ic_age_hesaplama"
+            android:title="AGE Hesaplama" />
+        <item
+            android:id="@+id/calculationsActivitiyBmhHesaplama"
+            android:icon="@drawable/ic_bmh_hesaplama"
+            android:title="BMH Hesaplama" />
+        <item
+            android:id="@+id/calculationsActivitiyBkiHesaplama"
+            android:icon="@drawable/ic_bki_hesaplama"
+            android:title="BKİ Hesaplama" />
+        <item
             android:id="@+id/calculationsActivitiyAnasayfa"
             android:icon="@drawable/ic_anasayfa"
             android:title="Ana Sayfa" />
     </group>
-
-
     <item android:title="Yardım">
         <menu>
 
@@ -31,6 +51,7 @@
                 android:id="@+id/CalculationsActivitiyİletisim"
                 android:icon="@drawable/ic_profile_activity_iletisim"
                 android:title="İletişim" />
+
         </menu>
     </item>
 </menu>

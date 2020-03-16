@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".Hesaplamalar.AGEActivity">
+
+
+    <RadioButton
+        android:id="@+id/rbAgeFragment1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="rb1"
+        android:text="Aktif Değil "
+        android:textColor="#4ddbff"
+        app:layout_constraintBottom_toTopOf="@+id/rbAgeFragment4"
+        app:layout_constraintEnd_toStartOf="@+id/rbAgeFragment2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edCalculationsFragmentAGEKio" />
+
+
+    <RadioButton
+        android:id="@+id/rbAgeFragment2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="rb2"
+        android:text="Orta Aktif"
+        android:textColor="#4ddbff"
+        app:layout_constraintBottom_toBottomOf="@+id/rbAgeFragment1"
+        app:layout_constraintEnd_toStartOf="@+id/rbAgeFragment3"
+        app:layout_constraintStart_toEndOf="@+id/rbAgeFragment1"
+        app:layout_constraintTop_toTopOf="@+id/rbAgeFragment1" />
+
+    <RadioButton
+        android:id="@+id/rbAgeFragment3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="rb3"
+        android:text="Aktif"
+        android:textColor="#4ddbff"
+        app:layout_constraintBottom_toBottomOf="@+id/rbAgeFragment1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rbAgeFragment2"
+        app:layout_constraintTop_toTopOf="@+id/rbAgeFragment1" />
+
+    <RadioButton
+        android:id="@+id/rbAgeFragment4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="rb4"
+        android:text="Çok Aktif"
+        android:textColor="#4ddbff"
+        app:layout_constraintBottom_toTopOf="@+id/btnCalculationsFragmentAGEHesapla"
+        app:layout_constraintEnd_toStartOf="@+id/rbAgeFragment5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbAgeFragment1" />
+
+    <RadioButton
+        android:id="@+id/rbAgeFragment5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="rb5"
+        android:text="Ağır Aktif"
+        android:textColor="#4ddbff"
+        app:layout_constraintBottom_toBottomOf="@+id/rbAgeFragment4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rbAgeFragment4"
+        app:layout_constraintTop_toTopOf="@+id/rbAgeFragment4" />
+
+    <EditText
+        android:id="@+id/edCalculationsFragmentAGECinsiyet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:hint="\t Cinsiyetinizi Yazınız"
+        android:inputType="textPersonName"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/edCalculationsFragmentAGEKio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="\n Almamız Gereken Enerjiyi Hesaplama \n"
+        android:textColor="#4ddbff"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/edCalculationsFragmentAGECinsiyet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edCalculationsFragmentAGEKio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:hint="\t Kilonuzu Giriniz "
+        android:inputType="textPersonName"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/rbAgeFragment1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edCalculationsFragmentAGECinsiyet" />
+
+    <Button
+        android:id="@+id/btnCalculationsFragmentAGEHesapla"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="hesaplaAge"
+        android:text="Hesapla"
+        android:textColor="#4ddbff"
+        app:layout_constraintBottom_toTopOf="@+id/tvCalculationsFragmentAGECevap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbAgeFragment4" />
+
+    <TextView
+        android:id="@+id/tvCalculationsFragmentAGECevap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="sdasa"
+        android:textColor="#4ddbff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalculationsFragmentAGEHesapla" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
