@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,11 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.girisekran.Class.BesinCalories;
 import com.example.girisekran.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdapter.ViewHolder> {
+public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdapter.ViewHolder> implements Filterable {
     Context context;
     List<BesinCalories> list;
+    List<BesinCalories> arananList;
     Activity activity;
     String name, porsiyon, kjal;
 
@@ -25,7 +29,7 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
         this.context = context;
         this.list = list;
         this.activity = activity;
-
+        this.arananList = list;
 
     }
 
@@ -39,7 +43,7 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        BesinCalories besinCalories = list.get(position);
+        BesinCalories besinCalories = arananList.get(position);
         holder.setData(besinCalories, position);
        /* holder.tvName.setText(list.get(position).toString());
         holder.tvPorsiyon.setText(list.get(position).toString());
@@ -48,9 +52,47 @@ public class BesinCaloriesAdapter extends RecyclerView.Adapter<BesinCaloriesAdap
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return arananList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+
+
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String key = charSequence.toString();
+                if (key.isEmpty()) {
+                    arananList = list;
+
+                } else {
+                    List<BesinCalories> listFiltered = new ArrayList<>();
+                    for (BesinCalories row : list) {
+                        if (row.getName().toLowerCase().contains(key.toLowerCase())) {
+                            listFiltered.add(row);
+
+                        }
+
+                    }
+                    arananList = listFiltered;
+
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = arananList;
+                return filterResults;
+
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                arananList = (List<BesinCalories>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+
+
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {

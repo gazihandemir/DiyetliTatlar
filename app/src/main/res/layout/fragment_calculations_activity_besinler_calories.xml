@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/background2"
     android:orientation="vertical"
     tools:context=".Fragments.Calculations.CalculationsActivityBesinlerCaloriesFragment">
 
@@ -11,13 +11,17 @@
         android:id="@+id/calUst"
         android:layout_width="match_parent"
 
+        android:layout_marginBottom="10dp"
         android:layout_height="wrap_content">
 
-        <SearchView
-            android:id="@+id/calculationsActivitiySearchView"
+        <EditText
+            android:id="@+id/edCalculationsActivitiySearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:targetApi="honeycomb" />
+            android:drawablePadding="8dp"
+            android:hint="Arama"
+           android:textColorHint="#7535AD"
+            android:drawableLeft="@drawable/ic_search_black_24dp" />
 
     </LinearLayout>
 
@@ -34,7 +38,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Besin"
-            android:textColor="@color/whiteTextColor"
+            android:textColor="#7535AD"
             android:textSize="20sp" />
 
         <TextView
@@ -45,7 +49,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="1 Porsiyon"
-            android:textColor="@color/whiteTextColor"
+            android:textColor="#7535AD"
             android:textSize="20sp" />
 
         <TextView
@@ -56,7 +60,7 @@
             android:layout_marginRight="2dp"
             android:layout_weight="1"
             android:text="Calories"
-            android:textColor="@color/whiteTextColor"
+            android:textColor="#7535AD"
             android:textSize="20sp" />
 
     </LinearLayout>

@@ -20,7 +20,7 @@
             android:layout_marginRight="2dp"
             android:layout_weight="1"
             android:text="Ahududu"
-            android:textColor="#ffb3ff"
+            android:textColor="#7535AD"
             android:gravity="center_vertical"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="1 su bardağı (148 g)"
-            android:textColor="#ffb3ff"
+            android:textColor="#7535AD"
             android:textSize="20sp"
             android:textStyle="bold" />
         <View
@@ -57,7 +57,7 @@
             android:gravity="center_vertical"
             android:layout_weight="1"
             android:text="123 kcal"
-            android:textColor="#ffb3ff"
+            android:textColor="#7535AD"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -66,7 +66,7 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="5dp"
-            android:background="@drawable/background2"
+            android:background="@drawable/background"
             />
 
 </LinearLayout>

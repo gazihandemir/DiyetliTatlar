@@ -229,10 +229,10 @@ public class SignUpActivity extends AppCompatActivity {
     public void profileActivityBasariHikayemFragmentFireStoreBosKaydet() {
         Map<String, String> hashmap = new HashMap<>();
         hashmap.put("Email", firebaseUser.getEmail().toString());
-        hashmap.put("haft1a", "");
-        hashmap.put("haft2a", "");
-        hashmap.put("haft3a", "");
-        hashmap.put("haft4a", "");
+        hashmap.put("haft1a", "0");
+        hashmap.put("haft2a", "0");
+        hashmap.put("haft3a", "0");
+        hashmap.put("haft4a", "0");
         hashmap.put("basariHikayesi","");
         firebaseFirestore.collection("ProfileBasariHikayesi").document(firebaseUser.getEmail().toString())
                 .set(hashmap)

@@ -1,10 +1,12 @@
 package com.example.girisekran.Fragments.Calculations;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -27,7 +29,7 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
     BesinCaloriesAdapter besinCaloriesAdapter;
     ArrayList<BesinCalories> list;
     BesinCalories besin;
-    SearchView searchView;
+    EditText searchView;
 
     public CalculationsActivityBesinlerCaloriesFragment() {
     }
@@ -40,17 +42,31 @@ public class CalculationsActivityBesinlerCaloriesFragment extends Fragment {
         jsonOku();
 
         View rootView = inflater.inflate(R.layout.fragment_calculations_activity_besinler_calories, container, false);
-        searchView = rootView.findViewById(R.id.calculationsActivitiySearchView);
+        searchView = rootView.findViewById(R.id.edCalculationsActivitiySearchView);
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                besinCaloriesAdapter.getFilter().filter(charSequence);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         recyclerView = rootView.findViewById(R.id.calculationsActivitiyBesinlerCaloriesRecyclerView);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
         besinCaloriesAdapter = new BesinCaloriesAdapter(getActivity(), list, getActivity());
         recyclerView.setAdapter(besinCaloriesAdapter);
-
-
         besinCaloriesAdapter.notifyDataSetChanged();
+
         return rootView;
     }
 
