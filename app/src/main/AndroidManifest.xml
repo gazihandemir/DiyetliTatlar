@@ -22,7 +22,6 @@
         <activity android:name=".Activity.CalculationsActivity" />
         <activity android:name=".Activity.ProfileActivity" />
         <activity android:name=".Activity.AkisActivity" />
-        <activity android:name=".Hesaplamalar.GunlukSuMiktariHesaplama" />
         <activity android:name=".Hesaplamalar.IdealKiloHesaplama" />
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.SignInActivity">
