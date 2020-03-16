@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Calculations.CalculationsActivityBMHHesaplamaFragment">
+    android:background="@drawable/background2"
+    tools:context=".Hesaplamalar.BMHActivity">
 
-    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/edBmhActKilo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:hint="\t Kilonuzu giriniz "
+        android:inputType="textPersonName"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBmhActHesapla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edBmhActCinsiyet" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="\nBazal metabolizma hızı hesaplama\n"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/edBmhActCinsiyet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/edBmhActCinsiyet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:hint="\t Cinsiyetinizi Yazınız"
+        android:inputType="textPersonName"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/edBmhActKilo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/tvBmhActCevap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBmhActHesapla" />
+
+    <Button
+        android:id="@+id/btnBmhActHesapla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:onClick="hesaplaBmh"
+        android:text="HESAPLA"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvBmhActCevap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edBmhActKilo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
