@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Calculations.CalculationsActivityBKIHesaplamaFragment">
+    android:background="@drawable/background2"
+    tools:context=".Activity.CalculationsActivity">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/imgBkiAct"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBkiActCevap" />
+
+    <EditText
+        android:id="@+id/edBkiActBoy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:hint="\t Boyunuzu Giriniz"
+        android:inputType="textPersonName"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBkiActHesapla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edBkiActKilo" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal"
+        android:text="\n Vücut Kitle İndeksi Hesaplama \n"
+        android:textColor="#4ddbff"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/edBkiActKilo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/edBkiActKilo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:ems="10"
+        android:hint="\t Kilonuzu Giriniz"
+        android:inputType="textPersonName"
+        android:textColor="#4ddbff"
+        android:textColorHint="#4ddbff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/edBkiActBoy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/tvBkiActCevap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:gravity="center_horizontal"
+        android:text=""
+        android:textColor="#4ddbff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imgBkiAct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBkiActHesapla" />
+
+    <Button
+        android:id="@+id/btnBkiActHesapla"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:text="HESAPLA"
+        android:textColor="#4ddbff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvBkiActCevap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edBkiActBoy" />
+</androidx.constraintlayout.widget.ConstraintLayout>

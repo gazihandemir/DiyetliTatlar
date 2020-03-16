@@ -25,7 +25,6 @@
         <activity android:name=".Hesaplamalar.GunlukSuMiktariHesaplama" />
         <activity android:name=".Hesaplamalar.BMHActivity" />
         <activity android:name=".Hesaplamalar.IdealKiloHesaplama" />
-        <activity android:name=".Hesaplamalar.BKİActivity" />
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.SignInActivity">
 
