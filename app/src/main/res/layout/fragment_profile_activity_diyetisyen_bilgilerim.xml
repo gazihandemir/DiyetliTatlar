@@ -18,20 +18,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:src="@drawable/mnv"></ImageView>
+            android:src="@drawable/mnv"></de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical"
-            android:text="Dyt. Gülten Manav"
+            android:text="Dyt. Gazihan DEMİR"
 
             android:textSize="30sp"
             android:textStyle="bold"></TextView>

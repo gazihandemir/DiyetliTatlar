@@ -5,10 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.example.girisekran.Fragments.DenemeFragment1;
 import com.example.girisekran.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,10 +34,12 @@ public class AkisActivity extends AppCompatActivity {
     }
 
     public void deneme1(View view) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+      /*  FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         DenemeFragment1 firstFragment = new DenemeFragment1();
-        fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();
+        fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();*/
+        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+        startActivity(intent);
     }
 
     public void deneme2(View view) {
@@ -79,9 +78,6 @@ public class AkisActivity extends AppCompatActivity {
                     }
                 });
     }*/
-
-
-
 
 
 }
