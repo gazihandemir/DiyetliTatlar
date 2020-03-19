@@ -33,7 +33,6 @@ public class ChatAdminActivity extends AppCompatActivity {
     UserAdapter userAdapter;
     RecyclerView userRecyclerView;
     String userName;
-    String userMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +43,8 @@ public class ChatAdminActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         kullaniciİsimVeMailCek();
-        list = new ArrayList<>();
-        userRecyclerView = findViewById(R.id.userRecyclerView);
-        layoutManager = new GridLayoutManager(ChatAdminActivity.this, 2);
-        userAdapter = new UserAdapter(ChatAdminActivity.this, list, ChatAdminActivity.this, userName);
-        userRecyclerView.setLayoutManager(layoutManager);
-        userRecyclerView.setAdapter(userAdapter);
+        System.out.println("gaziuser-> " + userName);
+
         listele();
     }
 
@@ -61,46 +56,47 @@ public class ChatAdminActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
                         userName = hashMap.get("user");
-                        userMail = hashMap.get("userMail");
-
+                        list = new ArrayList<>();
+                        userRecyclerView = findViewById(R.id.userRecyclerView);
+                        layoutManager = new GridLayoutManager(ChatAdminActivity.this, 1);
+                        userAdapter = new UserAdapter(ChatAdminActivity.this, list, ChatAdminActivity.this, userName);
+                        userRecyclerView.setLayoutManager(layoutManager);
+                        userRecyclerView.setAdapter(userAdapter);
+                        System.out.println("gaziuser-> " + userName);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
     }
 
     public void listele() {
-
         databaseReference.child("Kullanicilar").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if (!dataSnapshot.getKey().equals(userName)) {
-                    list.add(databaseReference.getKey());
-                    userAdapter.notifyDataSetChanged();
-                }
+                HashMap<String, String> kullanicilarMap = (HashMap<String, String>) dataSnapshot.getValue();
+                String userName = kullanicilarMap.get("user");
+                System.out.println("gazival->" + dataSnapshot.getValue());
+                list.add(userName);
+                userAdapter.notifyDataSetChanged();
+
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
