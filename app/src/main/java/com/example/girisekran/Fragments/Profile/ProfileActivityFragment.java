@@ -128,7 +128,7 @@ public class ProfileActivityFragment extends Fragment {
                 return true;
             }
         });
-        bilgileriCek();
+       bilgileriCek();
 
         return rootView;
 

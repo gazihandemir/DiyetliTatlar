@@ -67,6 +67,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/edChatAcitivityMesaj"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="5"
@@ -78,6 +79,7 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/btnChatActivitySendButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -39,6 +39,8 @@ public class AkisActivity extends AppCompatActivity {
         DenemeFragment1 firstFragment = new DenemeFragment1();
         fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();*/
         Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+        String IsimSoyisim = getIntent().getStringExtra("IsimSoyisim");
+        intent.putExtra("IsimSoyisim", IsimSoyisim);
         startActivity(intent);
     }
 
