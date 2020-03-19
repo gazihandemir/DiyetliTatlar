@@ -91,6 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
                             profileActivityKisiselBilgilerFragmentBosKaydet();
                             profileActivityDiyetisyenBilgilerimFragmentFireStoreBosKaydet();
                             profileActivityBasariHikayemFragmentFireStoreBosKaydet();
+                            kullaniciEkle();
                         } else {
                             Toast.makeText(SignUpActivity.this, "Kayıt oluşturulamadı complateListener", Toast.LENGTH_SHORT).show();
                         }
@@ -226,6 +227,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+
     public void profileActivityBasariHikayemFragmentFireStoreBosKaydet() {
         Map<String, String> hashmap = new HashMap<>();
         hashmap.put("Email", firebaseUser.getEmail().toString());
@@ -233,7 +235,7 @@ public class SignUpActivity extends AppCompatActivity {
         hashmap.put("haft2a", "0");
         hashmap.put("haft3a", "0");
         hashmap.put("haft4a", "0");
-        hashmap.put("basariHikayesi","");
+        hashmap.put("basariHikayesi", "");
         firebaseFirestore.collection("ProfileBasariHikayesi").document(firebaseUser.getEmail().toString())
                 .set(hashmap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -250,5 +252,22 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void kullaniciEkle() {
+        Map<String, String> kullanicilarMap = new HashMap();
+        String userEmail = firebaseUser.getEmail();
+        String userID = firebaseUser.getUid();
+        stName = name.getText().toString();
+      //  kullanicilarMap.put("userMail", userEmail);
+        kullanicilarMap.put("user", stName);
+        databaseReference.child("Kullanicilar").child(userID).setValue(kullanicilarMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(SignUpActivity.this, "Kullanici ekleme başarılı", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
