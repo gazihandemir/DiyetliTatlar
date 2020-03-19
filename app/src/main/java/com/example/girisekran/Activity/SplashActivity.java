@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(100, 1000) {
             @Override
             public void onFinish() {
                 user = mAuth.getCurrentUser();

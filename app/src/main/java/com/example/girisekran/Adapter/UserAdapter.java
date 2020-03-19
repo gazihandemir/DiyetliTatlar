@@ -22,7 +22,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     List<String> list;
     Activity activity;
     String userName;
-
     public UserAdapter(Context context, List<String> list, Activity activity, String userName) {
         this.context = context;
         this.list = list;
@@ -35,9 +34,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.user_layout, parent, false);
         return new ViewHolder(view);
-
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.textView.setText(list.get(position));
@@ -45,18 +42,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, ChatActivity.class);
-                intent.putExtra("userName", userName);
+                intent.putExtra("userName1","Admin");
                 intent.putExtra("otherName", list.get(position).toString());
                 activity.startActivity(intent);
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return list.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         LinearLayout linearLayout;

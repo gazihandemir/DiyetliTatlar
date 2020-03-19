@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ChatActivity extends AppCompatActivity {
-    String userName;
+    String userName, otherName, userName1;
     ImageView imgBackButton, imgSendButton;
     EditText edMesaj;
     private FirebaseUser firebaseUser;
@@ -59,11 +59,58 @@ public class ChatActivity extends AppCompatActivity {
         chatRecyclerView.setLayoutManager(layoutManager);
         chatAdapter = new ChatAdapter(ChatActivity.this, list, ChatActivity.this, userID.toString());
         chatRecyclerView.setAdapter(chatAdapter);
-        bilgileriCek1();
+        //   bilgileriCek1();
     }
 
 
     public void mesajGönder(String text) {
+        final Map messageMap = new HashMap();
+        messageMap.put("text", text);
+
+        String adminMail = "diyetisyenadmin@gmail.com";
+        String adminMailFireBase = firebaseUser.getEmail();
+        if (adminMail.equals(adminMailFireBase)) {
+            messageMap.put("from", userName1);
+            final String key = databaseReference.child("Chat").child(userName1).child(otherName).push().getKey();
+            databaseReference.child("Chat").child(userName1).child(otherName).child(key).setValue(messageMap)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                databaseReference.child("Chat").child(otherName).child(userName1).child(key).setValue(messageMap)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(ChatActivity.this, "mesaj gönderildi", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        }
+                    });
+        } else {
+            final String userID = firebaseUser.getUid();
+            messageMap.put("from", userID);
+            final String key1 = databaseReference.child("Chat").child(userID).child("Admin").push().getKey();
+            databaseReference.child("Chat").child(userID).child("Admin").child(key1).setValue(messageMap)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                databaseReference.child("Chat").child("Admin").child(userID).child(key1).setValue(messageMap)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(ChatActivity.this, "mesaj gönderildi", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        }
+                    });
+        }
+
+    }
+
+    public void mesajGönder1(String text) {
         final String userEmail = firebaseUser.getEmail();
         final String userID = firebaseUser.getUid();
         final Map messageMap = new HashMap();
@@ -154,6 +201,11 @@ public class ChatActivity extends AppCompatActivity {
         imgBackButton = findViewById(R.id.btnChatActivityBackButton);
         imgSendButton = findViewById(R.id.btnChatActivitySendButton);
         edMesaj = findViewById(R.id.edChatAcitivityMesaj);
+        if (firebaseUser.getEmail().equals("diyetisyenadmin@gmail.com")) {
+            userName1 = getIntent().getExtras().getString("userName1");
+        }
+
+        // System.out.println("gazigeliyor->"+userName1+"->"+otherName);
     }
 
     public void bilgileriCek() {
@@ -179,7 +231,7 @@ public class ChatActivity extends AppCompatActivity {
 
                         }
                     });
-        }else{
+        } else {
             databaseReference.child("Chat").child(userID).child("Admin").child(userID).
                     addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
