@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/message_body"
+        android:id="@+id/tvSend"
         android:background="@drawable/my_message_send"
         android:textColor="#7535AD"
         android:padding="10dp"

@@ -14,9 +14,9 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/btnChatActivityBackButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/btnChatActivityBackButton"
 
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -26,10 +26,10 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_weight="2"
-            android:layout_marginBottom="8dp"
             android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="2"
             android:foregroundGravity="center"
             android:src="@drawable/mnv" />
 
@@ -37,10 +37,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Diyetisyenim"
-            android:layout_marginBottom="8dp"
             android:textColor="#7535AD"
             android:textSize="20sp"
             android:textStyle="bold|italic" />
@@ -51,12 +51,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
-        <view
-            class="androidx.appcompat.app.AlertController$RecycleListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-        </view>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/chatAcitivityRecyclerView"
+            android:layout_height="match_parent"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -70,12 +70,12 @@
             android:id="@+id/edChatAcitivityMesaj"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="5"
             android:hint="Yazmaya başla"
             android:textColor="#7535AD"
             android:textColorHint="#7535AD"
             android:textSize="20sp"
-            android:layout_marginLeft="8dp"
             android:textStyle="bold" />
 
         <ImageView

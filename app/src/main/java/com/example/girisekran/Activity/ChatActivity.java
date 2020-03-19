@@ -35,23 +35,9 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        userName = getIntent().getExtras().getString("userName");
         tanimla();
-        imgBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
-                startActivity(intent);
-            }
-        });
-        imgSendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String mesaj = edMesaj.getText().toString();
-                edMesaj.setText("");
-                mesajGönder(mesaj);
-            }
-        });
+        backButton();
+        sendButton();
     }
 
 
@@ -113,6 +99,28 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+
+    public void backButton() {
+        imgBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void sendButton() {
+        imgSendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String mesaj = edMesaj.getText().toString();
+                edMesaj.setText("");
+                mesajGönder(mesaj);
+            }
+        });
+    }
+
     public void tanimla() {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -122,4 +130,5 @@ public class ChatActivity extends AppCompatActivity {
         imgSendButton = findViewById(R.id.btnChatActivitySendButton);
         edMesaj = findViewById(R.id.edChatAcitivityMesaj);
     }
+
 }
