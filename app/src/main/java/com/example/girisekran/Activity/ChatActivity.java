@@ -62,7 +62,7 @@ public class ChatActivity extends AppCompatActivity {
         chatRecyclerView.setLayoutManager(layoutManager);
         chatAdapter = new ChatAdapter(ChatActivity.this, list, ChatActivity.this, userID.toString());
         chatRecyclerView.setAdapter(chatAdapter);
-       // bilgileriCek();
+        // bilgileriCek();
         kullaniciCek();
     }
 
@@ -202,14 +202,14 @@ public class ChatActivity extends AppCompatActivity {
         String adminMail = "diyetisyenadmin@gmail.com";
         String adminMailFireBase = firebaseUser.getEmail();
         if (adminMail.equals(adminMailFireBase)) {
-            System.out.println("gazi->pikacu"+otherName);
+            System.out.println("gazi->pikacu" + otherName);
 
             System.out.println("gazinull->" + userName1 + "-" + userName + "" + otherName);
             databaseReference.child("Chat").child(userName1).child("oGeB49XXUsRAlCypndQoUBygPNI3").
                     addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                           // System.out.println("kelle->" + userKellesi + "kelle name " + kelleName + "--");
+                            // System.out.println("kelle->" + userKellesi + "kelle name " + kelleName + "--");
                             kullaniciCek();
                             HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
                             String user = hashMap.get("from");
@@ -326,60 +326,66 @@ public class ChatActivity extends AppCompatActivity {
 
                 userKellesi = dataSnapshot1.getKey();
                 System.out.println("kelle->" + userKellesi + "kelle name " + kelleName + " other name " + otherName);
-                System.out.println("gazi->userKellesi "+userKellesi);
-                System.out.println("gazi->kelleName"+kelleName);
-                System.out.println("gazi->otherName"+otherName);
+                System.out.println("gazi->userKellesi " + userKellesi);
+                System.out.println("gazi->kelleName" + kelleName);
+                System.out.println("gazi->otherName" + otherName);
 
 
-                System.out.println("gazi->gercekKelle"+gercekKelle);
+                System.out.println("gazi->gercekKelle" + gercekKelle);
                 String adminMail = "diyetisyenadmin@gmail.com";
                 String adminMailFireBase = firebaseUser.getEmail();
                 if (kelleName.equals(otherName)) {
                     gercekKelle = userKellesi;
 
-                if (adminMail.equals(adminMailFireBase)) {
-                    System.out.println("gazi->pikacu"+otherName);
+                    if (adminMail.equals(adminMailFireBase)) {
+                        System.out.println("gazi->pikacu" + otherName);
 
-                    System.out.println("gazinull->" + userName1 + "-" + userName + "" + otherName);
-                    databaseReference.child("Chat").child(userName1).child(gercekKelle).
-                            addChildEventListener(new ChildEventListener() {
-                                @Override
-                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                                    // System.out.println("kelle->" + userKellesi + "kelle name " + kelleName + "--");
-                                    HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
-                                    System.out.println("gazi->userKellesi1"+userKellesi);
-                                    System.out.println("gazi->kelleName1"+kelleName);
-                                    System.out.println("gazi->otherName1"+otherName);
-                                    System.out.println("gazi->gercekKelle1"+gercekKelle);
-                                    String user = hashMap.get("from");
-                                    String text = hashMap.get("text");
-                                    ChatModel chatModel = new ChatModel(user, text);
-                                    list.add(chatModel);
-                                    chatAdapter.notifyDataSetChanged();
-                                    chatRecyclerView.scrollToPosition(list.size() - 1);
-                                }
+                        System.out.println("gazinull->" + userName1 + "-" + userName + "" + otherName);
+                        databaseReference.child("Chat").child(userName1).child(gercekKelle).
+                                addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                        // System.out.println("kelle->" + userKellesi + "kelle name " + kelleName + "--");
+                                        HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
+                                        System.out.println("gazi->userKellesi1" + userKellesi);
+                                        System.out.println("gazi->kelleName1" + kelleName);
+                                        System.out.println("gazi->otherName1" + otherName);
+                                        System.out.println("gazi->gercekKelle1" + gercekKelle);
+                                        String user = hashMap.get("from");
+                                        String text = hashMap.get("text");
+                                        ChatModel chatModel = new ChatModel(user, text);
+                                        list.add(chatModel);
+                                        chatAdapter.notifyDataSetChanged();
+                                        chatRecyclerView.scrollToPosition(list.size() - 1);
+                                    }
 
-                                @Override
-                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                                }
+                                    }
 
-                                @Override
-                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-                                }
+                                    }
 
-                                @Override
-                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                                }
+                                    }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                }
-                            });
-                }
+                                    }
+                                });
+                    } else {
+                        String userID = firebaseUser.getUid();
+                        System.out.println("gaziler->userKellesi1" + userKellesi);
+                        System.out.println("gaziler->kelleName1" + kelleName);
+                        System.out.println("gaziler->otherName1" + otherName);
+                        System.out.println("gaziler->gercekKelle1" + gercekKelle);
+                    }
                 }
             }
 
