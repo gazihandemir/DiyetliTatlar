@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.girisekran">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -24,7 +23,6 @@
         <activity android:name=".Activity.CalculationsActivity" />
         <activity android:name=".Activity.ProfileActivity" />
         <activity android:name=".Activity.AkisActivity" />
-        <activity android:name=".Hesaplamalar.IdealKiloHesaplama" />
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.SignInActivity" />
     </application>

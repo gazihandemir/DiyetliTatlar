@@ -38,14 +38,10 @@ public class AkisActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         DenemeFragment1 firstFragment = new DenemeFragment1();
         fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();*/
-        String admin = "diyetisyenadmin@gmail.com";
-        if (admin.equals(firebaseUser.getEmail())) {
-            Intent intent = new Intent(getApplicationContext(), ChatAdminActivity.class);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-            startActivity(intent);
-        }
+
+
+        Intent intent = new Intent(getApplicationContext(), ChatAdminActivity.class);
+        startActivity(intent);
 
 
     }

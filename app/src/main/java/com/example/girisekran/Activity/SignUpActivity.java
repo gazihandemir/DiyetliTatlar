@@ -85,8 +85,8 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isComplete()) {
                             firebaseUser = mAuth.getCurrentUser();
-                            users1.setUserEmail(firebaseUser.getEmail());
-                            System.out.println("user email : " + users1.getUserEmail());
+//                            users1.setUserEmail(firebaseUser.getEmail());
+                            System.out.println("user email : " + firebaseUser.getEmail());
                             profilActivityFragmentBosKaydet();
                             profileActivityKisiselBilgilerFragmentBosKaydet();
                             profileActivityDiyetisyenBilgilerimFragmentFireStoreBosKaydet();

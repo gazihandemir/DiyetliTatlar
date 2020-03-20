@@ -42,7 +42,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, ChatActivity.class);
-                intent.putExtra("userName1","Admin");
+                intent.putExtra("userName",userName);
                 intent.putExtra("otherName", list.get(position).toString());
                 activity.startActivity(intent);
             }

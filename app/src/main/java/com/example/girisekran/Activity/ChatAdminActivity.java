@@ -42,10 +42,10 @@ public class ChatAdminActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
+        list = new ArrayList<>();
         kullaniciİsimVeMailCek();
-        System.out.println("gaziuser-> " + userName);
-
         listele();
+        System.out.println("gaziuser->1---" + userName);
     }
 
     public void kullaniciİsimVeMailCek() {
@@ -56,13 +56,12 @@ public class ChatAdminActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
                         userName = hashMap.get("user");
-                        list = new ArrayList<>();
                         userRecyclerView = findViewById(R.id.userRecyclerView);
                         layoutManager = new GridLayoutManager(ChatAdminActivity.this, 1);
                         userAdapter = new UserAdapter(ChatAdminActivity.this, list, ChatAdminActivity.this, userName);
                         userRecyclerView.setLayoutManager(layoutManager);
                         userRecyclerView.setAdapter(userAdapter);
-                        System.out.println("gaziuser-> " + userName);
+                        System.out.println("gaziuser->2---" + userName);
                     }
 
                     @Override
@@ -76,10 +75,21 @@ public class ChatAdminActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 HashMap<String, String> kullanicilarMap = (HashMap<String, String>) dataSnapshot.getValue();
-                String userName = kullanicilarMap.get("user");
-                System.out.println("gazival->" + dataSnapshot.getValue());
-                list.add(userName);
-                userAdapter.notifyDataSetChanged();
+                String userName1 = kullanicilarMap.get("user");
+                System.out.println("gazilist->-> " + userName1);
+                System.out.println("gazilist->2-> " + userName);
+
+                if (!userName.equals(userName1)) {
+                    System.out.println("gazival->" + dataSnapshot.getValue());
+                    list.add(userName1);
+                    userAdapter.notifyDataSetChanged();
+                }
+                if (!userName.toLowerCase().equals("admin")) {
+                    list.clear();
+                    list.add("admin");
+                    userAdapter.notifyDataSetChanged();
+                }
+
 
             }
 
