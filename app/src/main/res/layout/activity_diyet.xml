@@ -41,6 +41,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/tvDiyetActSabah"
                 android:textSize="12sp"
                 android:textStyle="italic"
                 android:text="3 Yumurta açık çay \n açık çay \n 1 ceviz"
@@ -84,6 +85,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/tvDiyetActAra1"
                 android:textSize="12sp"
                 android:textStyle="italic"
                 android:text="Tavuk(100gr) / Ton balığı(80gr) /  Peynir (2kk) \n
@@ -127,6 +129,7 @@ Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
+                android:id="@+id/tvDiyetActOglen"
                 android:textStyle="italic"
                 android:text="Tavuk(100gr) / Ton balığı(80gr) /  Peynir (2kk) \n
 Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
@@ -168,6 +171,7 @@ Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
+                android:id="@+id/tvDiyetActAra2"
                 android:textStyle="italic"
                 android:text="Tavuk(100gr) / Ton balığı(80gr) /  Peynir (2kk) \n
 Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
@@ -210,6 +214,7 @@ Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
                 android:textStyle="italic"
+                android:id="@+id/tvDiyetAksam"
                 android:text="Tavuk(100gr) / Ton balığı(80gr) /  Peynir (2kk) \n
 Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
                 />
@@ -250,6 +255,7 @@ Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
+                android:id="@+id/tvDiyetActGece"
                 android:textStyle="italic"
                 android:text="Tavuk(100gr) / Ton balığı(80gr) /  Peynir (2kk) \n
 Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"

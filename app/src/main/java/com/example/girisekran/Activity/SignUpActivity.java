@@ -253,6 +253,30 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+    public void diyetActivityDiyetEkleBilgileriFireStoreBosKaydet(){
+        Map<String,String> hashmap = new HashMap<>();
+        hashmap.put("Email",firebaseUser.getEmail().toString());
+        hashmap.put("diyetSabah","-");
+        hashmap.put("diyetAr1a","-");
+        hashmap.put("diyetOglen","-");
+        hashmap.put("diyetAr2a","-");
+        hashmap.put("diyetAksam","-");
+        hashmap.put("diyetGece","-");
+        firebaseFirestore.collection("DiyetListeleri").document(firebaseUser.getEmail().toString())
+                .set(hashmap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(SignUpActivity.this, "FireStore diyet ekle bos basarili", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "FireStore Basarisiz", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     public void kullaniciEkle() {
         Map<String, String> kullanicilarMap = new HashMap();
