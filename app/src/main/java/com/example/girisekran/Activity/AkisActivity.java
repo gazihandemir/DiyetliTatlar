@@ -61,6 +61,10 @@ public class AkisActivity extends AppCompatActivity {
         intent.putExtra("IsimSoyisim", IsimSoyisim);
         startActivity(intent);
     }
+    public void deneme4(View view){
+        Intent intent = new Intent(getApplicationContext(),DiyetActivity.class);
+        startActivity(intent);
+    }
 
  /*   private void mailKaydet() {
         String userID = firebaseUser.getUid();

@@ -12,11 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ChatAdminActivity"></activity>
+        <activity android:name=".Activity.DiyetActivity"></activity>
+        <activity android:name=".Activity.ChatAdminActivity" />
         <activity android:name=".Activity.ChatActivity" />
         <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

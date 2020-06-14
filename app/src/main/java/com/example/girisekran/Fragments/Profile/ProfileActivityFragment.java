@@ -103,8 +103,8 @@ public class ProfileActivityFragment extends Fragment {
                 */
 
                 veriKaydet();
-                // bilgileriCek();
-                Toast.makeText(getActivity(), "kisa tıklandı", Toast.LENGTH_SHORT).show();
+                bilgileriCek();
+               // Toast.makeText(getActivity(), "kisa tıklandı", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -128,7 +128,7 @@ public class ProfileActivityFragment extends Fragment {
                 return true;
             }
         });
-       //bilgileriCek();
+       bilgileriCek();
 
         return rootView;
 
@@ -164,7 +164,7 @@ public class ProfileActivityFragment extends Fragment {
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(getActivity(), "fotoflı tamam", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), "kayıt başarılı", Toast.LENGTH_SHORT).show();
                                         btnUpload.setVisibility(View.INVISIBLE);
 
                                     }

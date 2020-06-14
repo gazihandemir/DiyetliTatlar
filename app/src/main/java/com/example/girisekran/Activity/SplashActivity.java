@@ -35,10 +35,10 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        new CountDownTimer(100, 1000) {
+        new CountDownTimer(5000, 1000) {
             @Override
             public void onFinish() {
-                user = mAuth.getCurrentUser();
+                                user = mAuth.getCurrentUser();
                 if (user != null) {
                     Intent intent = new Intent(getApplicationContext(), AkisActivity.class);
                     startActivity(intent);
