@@ -91,6 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
                             profileActivityKisiselBilgilerFragmentBosKaydet();
                             profileActivityDiyetisyenBilgilerimFragmentFireStoreBosKaydet();
                             profileActivityBasariHikayemFragmentFireStoreBosKaydet();
+                            diyetActivityDiyetEkleBilgileriFireStoreBosKaydet();
                             kullaniciEkle();
                         } else {
                             Toast.makeText(SignUpActivity.this, "Kayıt oluşturulamadı complateListener", Toast.LENGTH_SHORT).show();
