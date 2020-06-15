@@ -214,7 +214,7 @@ Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
                 android:textStyle="italic"
-                android:id="@+id/tvDiyetAksam"
+                android:id="@+id/tvDiyetActAksam"
                 android:text="Tavuk(100gr) / Ton balığı(80gr) /  Peynir (2kk) \n
 Salata(içinde 4yk yeşil mercimek) \n 1 bardak ayran"
                 />

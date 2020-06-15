@@ -29,6 +29,8 @@ public class DiyetActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_diyet);
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
@@ -36,11 +38,10 @@ public class DiyetActivity extends AppCompatActivity {
         tvAra1 = findViewById(R.id.tvDiyetActAra1);
         tvOglen = findViewById(R.id.tvDiyetActOglen);
         tvAra2 = findViewById(R.id.tvDiyetActAra2);
-        tvAksam = findViewById(R.id.tvDiyetAksam);
+        tvAksam = findViewById(R.id.tvDiyetActAksam);
         tvGece = findViewById(R.id.tvDiyetActGece);
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diyet);
+        String yazi = tvSabah.getText().toString();
+        System.out.println("yazi -> " + yazi);
         bilgileriCekDiyet();
     }
 
@@ -62,12 +63,12 @@ public class DiyetActivity extends AppCompatActivity {
                 String userDiyetAra2 = (String) hashMap.get("diyetAr2a");
                 String userDiyetAksam = (String) hashMap.get("diyetAksam");
                 String userDiyetGece = (String) hashMap.get("diyetGece");
-                tvSabah.setText("cekildi");
-       /*         tvAra1.setText(userDiyetAra1);
+                tvSabah.setText(userDiyetSabah);
+                tvAra1.setText(userDiyetAra1);
                 tvOglen.setText(userDiyetOglen);
                 tvAra2.setText(userDiyetAra2);
                 tvAksam.setText(userDiyetAksam);
-                tvGece.setText(userDiyetGece);*/
+                tvGece.setText(userDiyetGece);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -79,3 +80,4 @@ public class DiyetActivity extends AppCompatActivity {
         });
     }
 }
+
