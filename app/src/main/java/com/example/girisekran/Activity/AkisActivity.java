@@ -33,7 +33,7 @@ public class AkisActivity extends AppCompatActivity {
 
     }
 
-    public void deneme1(View view) {
+    public void chatActivityGecis(View view) {
       /*  FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         DenemeFragment1 firstFragment = new DenemeFragment1();
@@ -46,7 +46,7 @@ public class AkisActivity extends AppCompatActivity {
 
     }
 
-    public void deneme2(View view) {
+    public void calculationsActivityGecis(View view) {
         Intent intent = new Intent(getApplicationContext(), CalculationsActivity.class);
         startActivity(intent);
       /*  FragmentManager fragmentManager = getSupportFragmentManager();
@@ -55,16 +55,22 @@ public class AkisActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.linearLayout2, firstFragment).commit();*/
     }
 
-    public void deneme5(View view) {
+    public void uploadPhotoActivityGecis(View view) {
+        Intent intent = new Intent(getApplicationContext(), UploadPhotoActivity.class);
+        startActivity(intent);
+    }
+    public void diyetActivityGecis(View view) {
+        Intent intent = new Intent(getApplicationContext(), DiyetActivity.class);
+        startActivity(intent);
+    }
+    public void profileActivityGecis(View view) {
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         String IsimSoyisim = getIntent().getStringExtra("IsimSoyisim");
         intent.putExtra("IsimSoyisim", IsimSoyisim);
         startActivity(intent);
     }
-    public void deneme4(View view){
-        Intent intent = new Intent(getApplicationContext(),DiyetActivity.class);
-        startActivity(intent);
-    }
+
+
 
  /*   private void mailKaydet() {
         String userID = firebaseUser.getUid();

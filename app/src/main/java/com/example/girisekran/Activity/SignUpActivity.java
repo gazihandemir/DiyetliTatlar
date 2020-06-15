@@ -254,15 +254,16 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-    public void diyetActivityDiyetEkleBilgileriFireStoreBosKaydet(){
-        Map<String,String> hashmap = new HashMap<>();
-        hashmap.put("Email",firebaseUser.getEmail().toString());
-        hashmap.put("diyetSabah","-");
-        hashmap.put("diyetAr1a","-");
-        hashmap.put("diyetOglen","-");
-        hashmap.put("diyetAr2a","-");
-        hashmap.put("diyetAksam","-");
-        hashmap.put("diyetGece","-");
+
+    public void diyetActivityDiyetEkleBilgileriFireStoreBosKaydet() {
+        Map<String, String> hashmap = new HashMap<>();
+        hashmap.put("Email", firebaseUser.getEmail().toString());
+        hashmap.put("diyetSabah", "-");
+        hashmap.put("diyetAr1a", "-");
+        hashmap.put("diyetOglen", "-");
+        hashmap.put("diyetAr2a", "-");
+        hashmap.put("diyetAksam", "-");
+        hashmap.put("diyetGece", "-");
         firebaseFirestore.collection("DiyetListeleri").document(firebaseUser.getEmail().toString())
                 .set(hashmap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -284,7 +285,7 @@ public class SignUpActivity extends AppCompatActivity {
         String userEmail = firebaseUser.getEmail();
         String userID = firebaseUser.getUid();
         stName = name.getText().toString();
-      //  kullanicilarMap.put("userMail", userEmail);
+        //  kullanicilarMap.put("userMail", userEmail);
         kullanicilarMap.put("user", stName);
         databaseReference.child("Kullanicilar").child(userID).setValue(kullanicilarMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

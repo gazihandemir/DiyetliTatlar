@@ -46,7 +46,7 @@
             android:background="@drawable/sicon_chat"
 
             android:gravity="center_vertical|center_horizontal"
-            android:onClick="deneme1"></Button>
+            android:onClick="chatActivityGecis"></Button>
 
         <Button
             android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
             android:background="@drawable/sicon_hesap"
 
             android:gravity="center_vertical|center_horizontal"
-            android:onClick="deneme2"></Button>
+            android:onClick="calculationsActivityGecis"></Button>
 
         <Button
             android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
             android:layout_weight="1"
-
+            android:onClick="uploadPhotoActivityGecis"
             android:background="@drawable/sicon_anasayfa"
             android:gravity="center_vertical|center_horizontal"></Button>
 
@@ -80,7 +80,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
-            android:onClick="deneme4"
+            android:onClick="diyetActivityGecis"
             android:layout_weight="1"
             android:background="@drawable/sicon_diyet"
             android:gravity="center_vertical|center_horizontal"></Button>
@@ -96,7 +96,7 @@
             android:layout_weight="1"
             android:background="@drawable/sicon_profile"
             android:gravity="center_vertical|center_horizontal"
-            android:onClick="deneme5"></Button>
+            android:onClick="profileActivityGecis"></Button>
 
 
     </LinearLayout>
