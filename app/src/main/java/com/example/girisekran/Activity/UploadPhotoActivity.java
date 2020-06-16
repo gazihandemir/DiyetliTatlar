@@ -137,7 +137,7 @@ public class UploadPhotoActivity extends AppCompatActivity {
                         hashmap.put("Email",userEmail);
                         hashmap.put("Comment",userComment);
                         hashmap.put("UploadPhoto",downloadUrl);
-                        databaseReference.child("AkisPhoto").child(userID).child("FotografBilgileri").setValue(hashmap)
+                        databaseReference.child("AkisPhoto").child("FotografBilgileri").child("2").setValue(hashmap)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

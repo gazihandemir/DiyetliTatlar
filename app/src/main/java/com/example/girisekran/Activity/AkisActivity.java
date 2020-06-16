@@ -4,20 +4,34 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.girisekran.Adapter.AkisAdapter;
 import com.example.girisekran.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AkisActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private FirebaseAuth mAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-
+    ArrayList<String> userEmailFromFB;
+    ArrayList<String> userCommentFromFB;
+    ArrayList<String> userImageFromFB;
+    AkisAdapter akisAdapter;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +42,14 @@ public class AkisActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = mAuth.getCurrentUser();
-        //  ilkGiris();
-        // ilkGirisiCek();
+        userCommentFromFB = new ArrayList<>();
+        userEmailFromFB = new ArrayList<>();
+        userImageFromFB = new ArrayList<>();
+        verileriCek();
+        recyclerView = findViewById(R.id.recAkisAct);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        akisAdapter = new AkisAdapter(userEmailFromFB, userCommentFromFB, userImageFromFB);
+        recyclerView.setAdapter(akisAdapter);
 
     }
 
@@ -59,10 +79,12 @@ public class AkisActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), UploadPhotoActivity.class);
         startActivity(intent);
     }
+
     public void diyetActivityGecis(View view) {
         Intent intent = new Intent(getApplicationContext(), DiyetActivity.class);
         startActivity(intent);
     }
+
     public void profileActivityGecis(View view) {
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         String IsimSoyisim = getIntent().getStringExtra("IsimSoyisim");
@@ -70,6 +92,44 @@ public class AkisActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void verileriCek() {
+        String userID = firebaseUser.getUid();
+        databaseReference.child("AkisPhoto").child("FotografBilgileri").child("1")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
+                        String userEmail = hashMap.get("Email");
+                        String userComment = hashMap.get("Comment");
+                        String userImage = hashMap.get("UploadPhoto");
+                        userCommentFromFB.add(userComment);
+                        userEmailFromFB.add(userEmail);
+                        userImageFromFB.add(userImage);
+                        akisAdapter.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+        databaseReference.child("AkisPhoto").child("FotografBilgileri").child("2")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
+                        String userEmail = hashMap.get("Email");
+                        String userComment = hashMap.get("Comment");
+                        String userImage = hashMap.get("UploadPhoto");
+                        userCommentFromFB.add(userComment);
+                        userEmailFromFB.add(userEmail);
+                        userImageFromFB.add(userImage);
+                        akisAdapter.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
+    }
 
 
  /*   private void mailKaydet() {
